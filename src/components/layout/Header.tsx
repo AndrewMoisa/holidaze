@@ -10,7 +10,7 @@ export function Header() {
     <header className="border-sand-200 bg-sand-50/95 sticky top-0 z-20 border-b backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <NavLink to="/" className="flex items-center">
-          <img src="/images/logo.jpg" alt="Holidaze" className="h-6 w-auto object-contain" />
+          <img src="/images/logo.png" alt="Holidaze" className="h-6 w-auto object-contain" />
         </NavLink>
 
         <nav className="flex items-center gap-1">
