@@ -4,14 +4,14 @@ A front end for Holidaze, an accommodation booking site, built against the Norof
 
 ## Links
 
-|                          |       |
-| ------------------------ | ----- |
-| Live demo                | _TBD_ |
-| Repository               | _TBD_ |
-| Design prototype (Figma) | _TBD_ |
-| Style guide              | _TBD_ |
-| Kanban board             | _TBD_ |
-| Gantt chart              | _TBD_ |
+|                          |                                         |
+| ------------------------ | --------------------------------------- |
+| Live demo                | _TBD_                                   |
+| Repository               | https://github.com/AndrewMoisa/holidaze |
+| Design prototype (Figma) | _TBD_                                   |
+| Style guide              | _TBD_                                   |
+| Kanban board             | _TBD_                                   |
+| Gantt chart              | _TBD_                                   |
 
 ## Tech stack
 
