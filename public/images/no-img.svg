@@ -1,0 +1,33 @@
+<!-- Holidaze Placeholders (Copy all code below) -->
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Define soft grey color for reuse -->
+    <defs>
+        <style>
+            .placeholder-icon { stroke: #A9A9A9; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+            .placeholder-text { fill: #808080; font-family: 'Inter', sans-serif; }
+            .placeholder-utility { fill: #A9A9A9; font-family: 'Inter', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em;}
+        </style>
+    </defs>
+
+    <!-- 1. TROPICAL PLACEHOLDER ICON (CENTERED) -->
+    <g transform="translate(150, 40)">
+        <path class="placeholder-icon" d="M12.3926 77.0188C12.3926 77.0188 20.9169 82.2619 32.5186 82.2619C44.1203 82.2619 51.1097 78.4727 51.1097 78.4727" />
+        <path class="placeholder-icon" d="M13.6846 76.2239L33.7431 34.2835" />
+        <path class="placeholder-icon" d="M49.2635 77.0188L30.9317 34.2835" />
+        <path class="placeholder-icon" d="M3.50488 64.6644H13.6846V76.2239L3.50488 82.2619V64.6644Z" />
+        <path class="placeholder-icon" d="M51.1097 64.6644H61.2894V82.2619L51.1097 76.2239V64.6644Z" />
+        <path class="placeholder-icon" d="M10.1504 59.5029H18.7753L33.7431 32.5186L48.7109 59.5029H57.3359L33.7431 22.8467L10.1504 59.5029Z" />
+        <path class="placeholder-icon" d="M33.7431 10.7416V22.8467L48.7109 59.5029H18.7753L33.7431 22.8467L33.7431 10.7416Z" />
+        <path class="placeholder-icon" d="M33.7431 6.8374V10.7416" />
+        <path class="placeholder-icon" d="M33.7431 3.50488V6.8374" />
+        <path class="placeholder-icon" d="M22.8467 6.8374L33.7431 10.7416" />
+        <path class="placeholder-icon" d="M44.6394 6.8374L33.7431 10.7416" />
+    </g>
+
+    <!-- 2. BRAND TEXT: HOLIDAZE (EDITABLE SHAPE) -->
+    <text x="50%" y="185" text-anchor="middle" class="placeholder-text" font-weight="600" font-size="36" >Holidaze</text>
+
+    <!-- 3. UTILITY TEXT: NO IMAGE FOUND (EDITABLE SHAPE) -->
+    <text x="50%" y="225" text-anchor="middle" class="placeholder-utility" >IMG NOT FOUND</text>
+    <text x="50%" y="248" text-anchor="middle" class="placeholder-utility" font-size="12" text-transform="none" letter-spacing="normal" >Explore our other options</text>
+</svg>
