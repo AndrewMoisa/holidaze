@@ -4,23 +4,23 @@ A front end for Holidaze, an accommodation booking site, built against the Norof
 
 ## Links
 
-|                          |                                         |
-| ------------------------ | --------------------------------------- |
-| Live demo                | _TBD_                                   |
-| Repository               | https://github.com/AndrewMoisa/holidaze |
-| Design prototype (Figma) | _TBD_                                   |
-| Style guide              | _TBD_                                   |
-| Kanban board             | _TBD_                                   |
-| Gantt chart              | _TBD_                                   |
+|                          |                                                                          |
+| ------------------------ | ------------------------------------------------------------------------ |
+| Live demo                | _TBD_                                                                    |
+| Repository               | https://github.com/AndrewMoisa/holidaze                                  |
+| Design prototype (Figma) | https://www.figma.com/design/5V0P29gY55rW0PbvSocp6I/Holidaze?node-id=0-1 |
+| Style guide              | _TBD_                                                                    |
+| Kanban board             | _TBD_                                                                    |
+| Gantt chart              | _TBD_                                                                    |
 
 ## Tech stack
 
 - React 19 + TypeScript, built with Vite
 - Tailwind CSS
 - React Router
-- React Hook Form + Zod for form validation
-- react-day-picker + date-fns for availability calendars
-- Vitest, React Testing Library and MSW for testing
+- React Hook Form + Zod for form validation and typed schemas
+- react-day-picker + date-fns for availability calendars and booking date ranges
+- Vitest, React Testing Library and MSW for unit, component, and integration tests
 - Hosted on Netlify
 
 ## Getting started
@@ -66,10 +66,17 @@ A suggested walkthrough:
 4. Register a second account as a venue manager, log in, and create a venue.
 5. Edit and then delete the venue, and view any bookings made against it.
 
+## Automated tests
+
+The test suite covers pure utilities, form validation, key components, auth state
+management, and an MSW-backed integration test for the home page. Run it with
+`npm run test`.
+
 ## Known limitations
 
 - No payment flow is implemented; bookings are recorded without payment.
 - Avatar and venue media are set by URL rather than file upload, matching what the underlying API supports.
+- Venue search matches name/description only (the Noroff API doesn't support server-side filtering by date availability or guest count), so date and guest selection happen on each venue's own page rather than in the home page search bar.
 
 ## Author
 
