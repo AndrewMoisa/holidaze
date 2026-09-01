@@ -48,15 +48,13 @@ export function HomePage() {
 
   return (
     <div>
-      <section className="from-brand-700 to-brand-500 bg-gradient-to-br pt-16 pb-20 md:pt-24 md:pb-28">
-        <div className="mx-auto max-w-6xl px-4">
-          <h1 className="text-3xl font-semibold text-white md:text-4xl">
-            Find your next stay
-          </h1>
-          <p className="text-sand-50 mt-2 max-w-md">
-            Browse venues from hosts around the world and book your next trip.
-          </p>
-        </div>
+      <section className="relative pb-12">
+        <h1 className="sr-only">Find your next stay</h1>
+        <img
+          src="/images/newhero.jpg"
+          alt="Holidaze — book your next dream getaway"
+          className="h-56 w-full object-cover sm:h-72 md:h-96"
+        />
       </section>
 
       <div className="mx-auto -mt-10 max-w-2xl px-4 md:-mt-12">

@@ -55,7 +55,10 @@ export function Header() {
               <NavLink to="/login" className={navLinkClasses}>
                 Log in
               </NavLink>
-              <NavLink to="/register" className={navLinkClasses}>
+              <NavLink
+                to="/register"
+                className="from-brand-300 to-brand-500 ml-1 rounded-2xl bg-gradient-to-r px-4 py-2 text-sm font-medium text-white shadow-sm transition-opacity hover:opacity-90"
+              >
                 Sign up
               </NavLink>
             </>
