@@ -77,20 +77,26 @@ export function HomePage() {
       />
 
       <section className="mx-auto max-w-6xl px-4 py-8">
-        <div className="border-brand-200 bg-brand-50 rounded-xl border p-6 md:p-8">
+        <div className="rounded-xl bg-amber-400 p-6 md:p-8">
           <h2 className="text-ink-900 text-xl font-semibold">Book with confidence</h2>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li className="text-ink-900/80 flex items-start gap-2">
-              <span className="text-brand-600 mt-0.5">✓</span>
+          <ul className="mt-4 space-y-3 text-sm">
+            <li className="text-ink-900 flex items-start gap-2.5">
+              <span className="bg-brand-600 mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
+                ✓
+              </span>
               Every venue is listed by a registered host and reviewable before you book.
             </li>
-            <li className="text-ink-900/80 flex items-start gap-2">
-              <span className="text-brand-600 mt-0.5">✓</span>
+            <li className="text-ink-900 flex items-start gap-2.5">
+              <span className="bg-brand-600 mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
+                ✓
+              </span>
               See real availability up front, so you never book a date that's already
               taken.
             </li>
-            <li className="text-ink-900/80 flex items-start gap-2">
-              <span className="text-brand-600 mt-0.5">✓</span>
+            <li className="text-ink-900 flex items-start gap-2.5">
+              <span className="bg-brand-600 mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
+                ✓
+              </span>
               Manage or cancel any upcoming booking yourself, anytime, from your
               dashboard.
             </li>
