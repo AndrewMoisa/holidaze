@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth'
 
 const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
   `px-3 py-2 text-sm font-medium rounded-md transition-colors ${
@@ -6,23 +7,59 @@ const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
   }`
 
 export function Header() {
+  const { isAuthenticated, profile, logout } = useAuth()
+
   return (
     <header className="border-sand-200 bg-sand-50/95 sticky top-0 z-20 border-b backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <NavLink to="/" className="flex items-center">
-          <img src="/images/logo.png" alt="Holidaze" className="h-6 w-auto object-contain" />
+          <img
+            src="/images/logo.png"
+            alt="Holidaze"
+            className="h-6 w-auto object-contain"
+          />
         </NavLink>
 
         <nav className="flex items-center gap-1">
           <NavLink to="/" className={navLinkClasses} end>
             Venues
           </NavLink>
-          <NavLink to="/login" className={navLinkClasses}>
-            Log in
-          </NavLink>
-          <NavLink to="/register" className={navLinkClasses}>
-            Sign up
-          </NavLink>
+
+          {isAuthenticated && profile?.venueManager && (
+            <NavLink to="/manager/venues" className={navLinkClasses}>
+              My venues
+            </NavLink>
+          )}
+
+          {isAuthenticated && (
+            <NavLink to="/my-bookings" className={navLinkClasses}>
+              My bookings
+            </NavLink>
+          )}
+
+          {isAuthenticated ? (
+            <>
+              <NavLink to="/profile" className={navLinkClasses}>
+                {profile?.name}
+              </NavLink>
+              <button
+                type="button"
+                onClick={logout}
+                className="text-ink-900/70 hover:text-brand-700 rounded-md px-3 py-2 text-sm font-medium transition-colors"
+              >
+                Log out
+              </button>
+            </>
+          ) : (
+            <>
+              <NavLink to="/login" className={navLinkClasses}>
+                Log in
+              </NavLink>
+              <NavLink to="/register" className={navLinkClasses}>
+                Sign up
+              </NavLink>
+            </>
+          )}
         </nav>
       </div>
     </header>

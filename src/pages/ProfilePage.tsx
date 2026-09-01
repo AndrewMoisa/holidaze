@@ -1,10 +1,34 @@
+import { useAuth } from '../hooks/useAuth'
+
 export function ProfilePage() {
+  const { profile } = useAuth()
+
+  if (!profile) return null
+
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
-      <h1 className="text-ink-900 text-2xl font-semibold">Your profile</h1>
-      <p className="text-ink-900/60 mt-2">
-        Profile details and avatar update coming soon.
-      </p>
+      <div className="flex items-center gap-4">
+        <img
+          src={profile.avatar?.url || '/images/no-img.svg'}
+          alt={profile.avatar?.alt || profile.name}
+          className="border-sand-200 h-16 w-16 rounded-full border object-cover"
+        />
+        <div>
+          <h1 className="text-ink-900 text-2xl font-semibold">{profile.name}</h1>
+          <p className="text-ink-900/60">{profile.email}</p>
+        </div>
+      </div>
+
+      <dl className="mt-6 grid grid-cols-2 gap-4 text-sm">
+        <div>
+          <dt className="text-ink-900/50">Account type</dt>
+          <dd className="text-ink-900">
+            {profile.venueManager ? 'Venue manager' : 'Customer'}
+          </dd>
+        </div>
+      </dl>
+
+      <p className="text-ink-900/60 mt-6 text-sm">Avatar updates are coming soon.</p>
     </div>
   )
 }

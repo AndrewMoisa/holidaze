@@ -10,6 +10,8 @@ import { ManagerVenuesPage } from '../pages/ManagerVenuesPage'
 import { ManagerVenueFormPage } from '../pages/ManagerVenueFormPage'
 import { ManagerVenueBookingsPage } from '../pages/ManagerVenueBookingsPage'
 import { NotFoundPage } from '../pages/NotFoundPage'
+import { ProtectedRoute } from './ProtectedRoute'
+import { ManagerRoute } from './ManagerRoute'
 
 export const router = createBrowserRouter([
   {
@@ -19,12 +21,54 @@ export const router = createBrowserRouter([
       { path: '/venues/:id', element: <VenueDetailPage /> },
       { path: '/login', element: <LoginPage /> },
       { path: '/register', element: <RegisterPage /> },
-      { path: '/profile', element: <ProfilePage /> },
-      { path: '/my-bookings', element: <CustomerBookingsPage /> },
-      { path: '/manager/venues', element: <ManagerVenuesPage /> },
-      { path: '/manager/venues/new', element: <ManagerVenueFormPage mode="create" /> },
-      { path: '/manager/venues/:id/edit', element: <ManagerVenueFormPage mode="edit" /> },
-      { path: '/manager/venues/:id/bookings', element: <ManagerVenueBookingsPage /> },
+      {
+        path: '/profile',
+        element: (
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/my-bookings',
+        element: (
+          <ProtectedRoute>
+            <CustomerBookingsPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/manager/venues',
+        element: (
+          <ManagerRoute>
+            <ManagerVenuesPage />
+          </ManagerRoute>
+        ),
+      },
+      {
+        path: '/manager/venues/new',
+        element: (
+          <ManagerRoute>
+            <ManagerVenueFormPage mode="create" />
+          </ManagerRoute>
+        ),
+      },
+      {
+        path: '/manager/venues/:id/edit',
+        element: (
+          <ManagerRoute>
+            <ManagerVenueFormPage mode="edit" />
+          </ManagerRoute>
+        ),
+      },
+      {
+        path: '/manager/venues/:id/bookings',
+        element: (
+          <ManagerRoute>
+            <ManagerVenueBookingsPage />
+          </ManagerRoute>
+        ),
+      },
       { path: '*', element: <NotFoundPage /> },
     ],
   },
