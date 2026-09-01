@@ -1,4 +1,5 @@
 import { useAuth } from '../hooks/useAuth'
+import { AvatarUploadForm } from '../components/profile/AvatarUploadForm'
 
 export function ProfilePage() {
   const { profile } = useAuth()
@@ -28,7 +29,10 @@ export function ProfilePage() {
         </div>
       </dl>
 
-      <p className="text-ink-900/60 mt-6 text-sm">Avatar updates are coming soon.</p>
+      <div className="mt-8">
+        <h2 className="text-ink-900 mb-3 text-lg font-medium">Update avatar</h2>
+        <AvatarUploadForm />
+      </div>
     </div>
   )
 }

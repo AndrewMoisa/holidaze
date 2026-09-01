@@ -4,6 +4,7 @@ import { useAuth } from '../hooks/useAuth'
 import { VenueGallery } from '../components/venue/VenueGallery'
 import { VenueAmenities } from '../components/venue/VenueAmenities'
 import { AvailabilityCalendar } from '../components/booking/AvailabilityCalendar'
+import { BookingForm } from '../components/booking/BookingForm'
 import { Spinner } from '../components/ui/Spinner'
 import { ErrorMessage } from '../components/ui/ErrorMessage'
 import { formatPrice } from '../utils/currency'
@@ -63,7 +64,9 @@ export function VenueDetailPage() {
           </p>
 
           {isAuthenticated ? (
-            <p className="text-ink-900/60 mt-4 text-sm">Booking is coming soon.</p>
+            <div className="mt-4">
+              <BookingForm venue={venue} bookedRanges={bookedRanges} />
+            </div>
           ) : (
             <Link
               to="/login"
