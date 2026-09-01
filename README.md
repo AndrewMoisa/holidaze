@@ -9,9 +9,9 @@ A front end for Holidaze, an accommodation booking site, built against the Norof
 | Live demo                | _TBD_                                                                    |
 | Repository               | https://github.com/AndrewMoisa/holidaze                                  |
 | Design prototype (Figma) | https://www.figma.com/design/5V0P29gY55rW0PbvSocp6I/Holidaze?node-id=0-1 |
-| Style guide              | _TBD_                                                                    |
+| Style guide              | https://claude.ai/code/artifact/2125c72a-561e-4b9f-ab04-4b637ee7861d     |
 | Kanban board             | _TBD_                                                                    |
-| Gantt chart              | _TBD_                                                                    |
+| Gantt chart              | https://claude.ai/code/artifact/c06542a9-128e-43d0-80e0-a0b7af235da9     |
 
 ## Tech stack
 
