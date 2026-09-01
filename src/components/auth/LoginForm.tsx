@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useLocation, useNavigate, type Location } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { ApiError } from '../../api/client'
 import { loginSchema, type LoginFormValues } from '../../utils/schemas/auth.schema'
@@ -11,8 +10,6 @@ import { ErrorMessage } from '../ui/ErrorMessage'
 
 export function LoginForm() {
   const { login } = useAuth()
-  const navigate = useNavigate()
-  const location = useLocation()
   const [formError, setFormError] = useState<string | null>(null)
 
   const {
@@ -25,8 +22,6 @@ export function LoginForm() {
     setFormError(null)
     try {
       await login(values)
-      const from = (location.state as { from?: Location })?.from
-      navigate(from?.pathname ?? '/', { replace: true })
     } catch (err) {
       setFormError(
         err instanceof ApiError ? err.message : 'Something went wrong. Try again.',

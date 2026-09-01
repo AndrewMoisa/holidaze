@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { ApiError } from '../../api/client'
 import { registerSchema, type RegisterFormValues } from '../../utils/schemas/auth.schema'
@@ -12,7 +11,6 @@ import { ErrorMessage } from '../ui/ErrorMessage'
 
 export function RegisterForm() {
   const { register: registerUser } = useAuth()
-  const navigate = useNavigate()
   const [formError, setFormError] = useState<string | null>(null)
 
   const {
@@ -28,7 +26,6 @@ export function RegisterForm() {
     setFormError(null)
     try {
       await registerUser(values)
-      navigate('/', { replace: true })
     } catch (err) {
       setFormError(
         err instanceof ApiError ? err.message : 'Something went wrong. Try again.',

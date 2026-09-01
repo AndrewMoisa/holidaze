@@ -1,11 +1,15 @@
-import { Link, Navigate } from 'react-router-dom'
+import { Link, Navigate, useLocation } from 'react-router-dom'
 import { LoginForm } from '../components/auth/LoginForm'
 import { useAuth } from '../hooks/useAuth'
 
 export function LoginPage() {
   const { isAuthenticated } = useAuth()
+  const location = useLocation()
 
-  if (isAuthenticated) return <Navigate to="/" replace />
+  if (isAuthenticated) {
+    const from = (location.state as { from?: { pathname?: string } } | null)?.from
+    return <Navigate to={from?.pathname ?? '/'} replace />
+  }
 
   return (
     <div className="mx-auto max-w-md px-4 py-16">
