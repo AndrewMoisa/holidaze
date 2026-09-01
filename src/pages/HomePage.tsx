@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useVenues } from '../hooks/useVenues'
 import { useVenueRail } from '../hooks/useVenueRail'
 import { useDebounce } from '../hooks/useDebounce'
@@ -36,6 +37,13 @@ export function HomePage() {
   const [search, setSearch] = useState('')
   const [page, setPage] = useState(1)
   const debouncedSearch = useDebounce(search)
+  const location = useLocation()
+
+  useEffect(() => {
+    if (!location.hash) return
+    const element = document.getElementById(location.hash.slice(1))
+    element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [location.hash])
 
   const handleSearchChange = (value: string) => {
     setSearch(value)
@@ -48,27 +56,29 @@ export function HomePage() {
 
   return (
     <div>
-      <section className="relative pb-12">
+      <section className="relative">
         <h1 className="sr-only">Find your next stay</h1>
         <img
           src="/images/newhero.jpg"
           alt="Holidaze — book your next dream getaway"
           className="h-56 w-full object-cover sm:h-72 md:h-96"
         />
-      </section>
 
-      <div className="mx-auto -mt-10 max-w-2xl px-4 md:-mt-12">
-        <div className="rounded-xl bg-white p-3 shadow-lg">
+        <div className="absolute inset-x-0 bottom-0 mx-auto max-w-xl translate-y-1/2 px-4">
           <VenueSearchBar value={search} onChange={handleSearchChange} />
         </div>
-      </div>
+      </section>
+
+      <div className="h-10 sm:h-12" />
 
       <VenueRail
+        id="top-rated"
         title="Top rated stays"
         venues={topRated.venues}
         isLoading={topRated.isLoading}
       />
       <VenueRail
+        id="budget"
         title="Budget friendly stays"
         venues={budget.venues}
         isLoading={budget.isLoading}

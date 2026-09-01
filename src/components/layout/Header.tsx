@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 
 const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
@@ -6,12 +6,15 @@ const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
     isActive ? 'text-brand-700 bg-brand-100' : 'text-ink-900/70 hover:text-brand-700'
   }`
 
+const shortcutClasses =
+  'text-ink-900/70 hover:text-brand-700 text-sm font-medium transition-colors'
+
 export function Header() {
   const { isAuthenticated, profile, logout } = useAuth()
 
   return (
     <header className="border-sand-200 bg-sand-50/95 sticky top-0 z-20 border-b backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+      <div className="mx-auto grid max-w-6xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 py-3">
         <NavLink to="/" className="flex items-center">
           <img
             src="/images/logo.png"
@@ -20,11 +23,19 @@ export function Header() {
           />
         </NavLink>
 
-        <nav className="flex items-center gap-1">
-          <NavLink to="/" className={navLinkClasses} end>
+        <nav className="hidden items-center justify-center gap-6 md:flex">
+          <Link to="/" className={shortcutClasses}>
             Venues
-          </NavLink>
+          </Link>
+          <Link to="/#top-rated" className={shortcutClasses}>
+            Top rated
+          </Link>
+          <Link to="/#budget" className={shortcutClasses}>
+            Budget friendly
+          </Link>
+        </nav>
 
+        <nav className="flex items-center justify-end gap-1">
           {isAuthenticated && profile?.venueManager && (
             <NavLink to="/manager/venues" className={navLinkClasses}>
               My venues

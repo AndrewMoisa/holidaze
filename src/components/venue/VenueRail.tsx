@@ -3,16 +3,17 @@ import { VenueCard } from './VenueCard'
 import { Spinner } from '../ui/Spinner'
 
 interface VenueRailProps {
+  id?: string
   title: string
   venues: Venue[]
   isLoading: boolean
 }
 
-export function VenueRail({ title, venues, isLoading }: VenueRailProps) {
+export function VenueRail({ id, title, venues, isLoading }: VenueRailProps) {
   if (!isLoading && venues.length === 0) return null
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-8">
+    <section id={id} className="mx-auto max-w-6xl scroll-mt-20 px-4 py-8">
       <h2 className="text-ink-900 text-xl font-semibold">{title}</h2>
       <div className="mt-4">
         {isLoading ? (
