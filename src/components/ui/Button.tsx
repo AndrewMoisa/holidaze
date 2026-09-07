@@ -9,12 +9,11 @@ export function Button({ variant = 'primary', className, ...props }: ButtonProps
   return (
     <button
       className={clsx(
-        'rounded-xl px-4 py-2 text-sm font-medium shadow-sm transition-all disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none',
-        variant === 'primary' &&
-          'bg-brand-600 hover:bg-brand-700 text-white hover:shadow-md',
+        'rounded-xl px-4 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60',
+        variant === 'primary' && 'bg-brand-600 hover:bg-brand-700 text-white',
         variant === 'secondary' &&
-          'border-sand-200 text-ink-900 hover:bg-sand-100 border bg-white hover:shadow-md',
-        variant === 'danger' && 'bg-red-600 text-white hover:bg-red-700 hover:shadow-md',
+          'border-sand-200 text-ink-900 hover:bg-sand-100 border bg-white',
+        variant === 'danger' && 'bg-red-600 text-white hover:bg-red-700',
         className,
       )}
       {...props}

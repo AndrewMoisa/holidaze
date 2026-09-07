@@ -12,7 +12,11 @@ export function useSimilarVenues(excludeId: string | undefined, limit = 4) {
     async function load() {
       setIsLoading(true)
       try {
-        const res = await getVenues({ sort: 'rating', sortOrder: 'desc', limit: limit + 1 })
+        const res = await getVenues({
+          sort: 'rating',
+          sortOrder: 'desc',
+          limit: limit + 1,
+        })
         if (!cancelled) {
           setVenues(res.data.filter((venue) => venue.id !== excludeId).slice(0, limit))
         }

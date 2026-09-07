@@ -37,11 +37,11 @@ export function ManagerVenuesPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
-      <div className="flex items-center justify-between">
-        <h1 className="font-display text-ink-900 text-3xl font-semibold">My venues</h1>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h1 className="display text-ink-900 text-4xl! font-semibold">My venues</h1>
         <Link
           to="/manager/venues/new"
-          className="bg-brand-600 hover:bg-brand-700 rounded-xl px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:shadow-md"
+          className="bg-brand-600 hover:bg-brand-700 rounded-xl px-4 py-2 text-sm font-medium text-white transition-colors"
         >
           Create venue
         </Link>
@@ -64,7 +64,7 @@ export function ManagerVenuesPage() {
             {venues.map((venue) => (
               <div
                 key={venue.id}
-                className="border-sand-200 flex items-center gap-4 rounded-2xl border bg-white p-4 shadow-sm"
+                className="border-sand-200 flex items-center gap-4 rounded-2xl border bg-white p-4"
               >
                 <img
                   src={venue.media?.[0]?.url || '/images/no-image-icon.png'}
@@ -74,12 +74,14 @@ export function ManagerVenuesPage() {
                 <div className="flex-1">
                   <Link
                     to={`/venues/${venue.id}`}
-                    className="text-ink-900 hover:text-brand-600 font-medium"
+                    className="text-ink-900 hover:text-brand-600 -my-0.5 inline-block py-0.5 font-medium"
                   >
                     {venue.name}
                   </Link>
                   <div className="mt-1.5 flex items-center gap-2">
-                    <p className="text-ink-900/60 text-sm">{formatPrice(venue.price)} / night</p>
+                    <p className="text-ink-900/60 text-sm">
+                      {formatPrice(venue.price)} / night
+                    </p>
                     <span className="bg-brand-100 text-brand-700 rounded-full px-2.5 py-0.5 text-xs font-medium">
                       {venue.bookings?.length ?? 0} booking
                       {venue.bookings?.length === 1 ? '' : 's'}

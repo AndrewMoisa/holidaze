@@ -13,7 +13,7 @@ export function BookingCard({ booking, onCancel }: BookingCardProps) {
   const image = venue?.media?.[0]
 
   return (
-    <div className="border-sand-200 flex gap-4 rounded-2xl border bg-white p-4 shadow-sm">
+    <div className="border-sand-200 flex gap-4 rounded-2xl border bg-white p-4">
       <img
         src={image?.url || '/images/no-image-icon.png'}
         alt={image?.alt || venue?.name || ''}
@@ -23,7 +23,7 @@ export function BookingCard({ booking, onCancel }: BookingCardProps) {
         {venue ? (
           <Link
             to={`/venues/${venue.id}`}
-            className="text-ink-900 hover:text-brand-600 font-medium"
+            className="text-ink-900 hover:text-brand-600 -my-0.5 inline-block py-0.5 font-medium"
           >
             {venue.name}
           </Link>

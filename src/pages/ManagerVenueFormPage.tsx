@@ -132,7 +132,7 @@ export function ManagerVenueFormPage({ mode }: ManagerVenueFormPageProps) {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
-      <h1 className="font-display text-ink-900 text-3xl font-semibold">
+      <h1 className="display text-ink-900 text-4xl! font-semibold">
         {mode === 'create' ? 'Create venue' : 'Edit venue'}
       </h1>
       <div className="mt-6">

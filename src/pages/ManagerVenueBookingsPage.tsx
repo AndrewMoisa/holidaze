@@ -71,7 +71,7 @@ export function ManagerVenueBookingsPage() {
       <Link to="/manager/venues" className="text-brand-600 text-sm underline">
         &larr; Back to my venues
       </Link>
-      <h1 className="font-display text-ink-900 mt-2 text-3xl font-semibold">
+      <h1 className="display text-ink-900 mt-3 text-4xl! font-semibold">
         Bookings for {venue.name}
       </h1>
 
@@ -84,7 +84,7 @@ export function ManagerVenueBookingsPage() {
           {bookings.map((booking) => (
             <div
               key={booking.id}
-              className="border-sand-200 flex items-center justify-between rounded-2xl border bg-white p-4 shadow-sm"
+              className="border-sand-200 flex items-center justify-between rounded-2xl border bg-white p-4"
             >
               <div>
                 <p className="text-ink-900 font-medium">{booking.customer.name}</p>

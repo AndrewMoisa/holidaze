@@ -1,24 +1,40 @@
 import { Link } from 'react-router-dom'
 
+const linkClasses =
+  'text-brand-100/75 hover:text-white inline-block py-1 text-[15px] transition-colors duration-150'
+
 export function Footer() {
   return (
-    <footer className="border-sand-200 border-t">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-10 sm:grid-cols-3">
+    <footer className="bg-deep-900 mt-16">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="flex flex-col items-start gap-3 lg:pr-8">
+          <img
+            src="/images/logo.png"
+            alt="Holidaze"
+            width={531}
+            height={96}
+            className="h-6 w-auto object-contain"
+          />
+          <p className="text-brand-100/70 text-[15px]">
+            Find a place to stay, or list your own — booked in a couple of clicks.
+          </p>
+        </div>
+
         <div className="flex flex-col items-start gap-1">
-          <p className="text-ink-900 text-base font-medium">Explore</p>
-          <ul className="mt-1 flex flex-col gap-2 text-sm">
+          <p className="text-base font-medium text-white">Explore</p>
+          <ul className="mt-2 flex flex-col gap-2">
             <li>
-              <Link to="/venues" className="text-ink-900/70 hover:text-brand-600">
+              <Link to="/venues" className={linkClasses}>
                 Venues
               </Link>
             </li>
             <li>
-              <Link to="/register" className="text-ink-900/70 hover:text-brand-600">
+              <Link to="/register" className={linkClasses}>
                 Become a venue manager
               </Link>
             </li>
             <li>
-              <Link to="/login" className="text-ink-900/70 hover:text-brand-600">
+              <Link to="/login" className={linkClasses}>
                 Log in
               </Link>
             </li>
@@ -26,26 +42,24 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-start gap-1">
-          <p className="text-ink-900 text-base font-medium">About</p>
-          <ul className="mt-1 flex flex-col gap-2 text-sm">
-            <li className="text-ink-900/70">Noroff front-end capstone project</li>
-            <li className="text-ink-900/70">
-              Built with React, TypeScript &amp; Tailwind
-            </li>
+          <p className="text-base font-medium text-white">About</p>
+          <ul className="text-brand-100/70 mt-2 flex flex-col gap-2 text-[15px]">
+            <li>Noroff front-end capstone project</li>
+            <li>Built with React, TypeScript &amp; Tailwind</li>
           </ul>
         </div>
 
         <div className="flex flex-col items-start gap-1">
-          <p className="text-ink-900 text-base font-medium">Contact</p>
-          <ul className="mt-1 flex flex-col gap-3 text-sm">
+          <p className="text-base font-medium text-white">Contact</p>
+          <ul className="mt-2 flex flex-col gap-3">
             <li>
               <a
                 href="https://github.com/AndrewMoisa/holidaze"
                 target="_blank"
                 rel="noreferrer"
-                className="text-ink-900/70 hover:text-brand-600 flex items-center gap-3"
+                className={`${linkClasses} flex items-center gap-3`}
               >
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-100">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/10">
                   <svg
                     aria-hidden="true"
                     viewBox="0 0 16 16"
@@ -61,8 +75,8 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-sand-200 border-t px-4 py-4">
-        <p className="text-ink-900/50 mx-auto max-w-6xl text-sm">
+      <div className="border-t border-white/10 px-4 py-4">
+        <p className="text-brand-100/50 mx-auto max-w-6xl text-sm">
           &copy; {new Date().getFullYear()} Holidaze
         </p>
       </div>

@@ -15,7 +15,7 @@ export function ProfilePage() {
           className="border-sand-200 h-16 w-16 rounded-full border object-cover"
         />
         <div>
-          <h1 className="font-display text-ink-900 text-3xl font-semibold">{profile.name}</h1>
+          <h1 className="display text-ink-900 text-4xl! font-semibold">{profile.name}</h1>
           <p className="text-ink-900/60">{profile.email}</p>
         </div>
       </div>

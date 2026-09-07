@@ -56,7 +56,7 @@ export function VenueForm({
         {...register('description')}
       />
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <Input
           label="Price / night"
           type="number"
@@ -98,7 +98,7 @@ export function VenueForm({
 
       <fieldset className="space-y-3">
         <legend className="text-ink-900 text-sm font-medium">Location (optional)</legend>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Input label="Address" {...register('address')} />
           <Input label="City" {...register('city')} />
           <Input label="Zip" {...register('zip')} />

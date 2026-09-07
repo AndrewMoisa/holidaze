@@ -8,9 +8,17 @@ interface UseVenuesOptions {
   q?: string
   page?: number
   limit?: number
+  sort?: string
+  sortOrder?: 'asc' | 'desc'
 }
 
-export function useVenues({ q, page = 1, limit = 12 }: UseVenuesOptions) {
+export function useVenues({
+  q,
+  page = 1,
+  limit = 12,
+  sort = 'created',
+  sortOrder = 'desc',
+}: UseVenuesOptions) {
   const [venues, setVenues] = useState<Venue[]>([])
   const [meta, setMeta] = useState<ApiMeta>({})
   const [isLoading, setIsLoading] = useState(true)
@@ -24,9 +32,8 @@ export function useVenues({ q, page = 1, limit = 12 }: UseVenuesOptions) {
       setError(null)
 
       try {
-        const res = q
-          ? await searchVenues(q, { page, limit })
-          : await getVenues({ page, limit, sort: 'created', sortOrder: 'desc' })
+        const query = { page, limit, sort, sortOrder }
+        const res = q ? await searchVenues(q, query) : await getVenues(query)
 
         if (cancelled) return
         setVenues(res.data)
@@ -44,7 +51,7 @@ export function useVenues({ q, page = 1, limit = 12 }: UseVenuesOptions) {
     return () => {
       cancelled = true
     }
-  }, [q, page, limit])
+  }, [q, page, limit, sort, sortOrder])
 
   return { venues, meta, isLoading, error }
 }

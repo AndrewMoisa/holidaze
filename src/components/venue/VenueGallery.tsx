@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { MediaItem } from '../../types/profile'
+import { VenueImage } from '../ui/VenueImage'
 
 export function VenueGallery({
   media,
@@ -18,7 +19,7 @@ export function VenueGallery({
   return (
     <div className="md:flex md:items-start md:gap-3">
       <div className="bg-sand-100 relative aspect-[16/9] overflow-hidden rounded-2xl md:order-last md:flex-1">
-        <img
+        <VenueImage
           src={active.url}
           alt={active.alt || venueName}
           className="h-full w-full object-cover"
@@ -41,7 +42,7 @@ export function VenueGallery({
                 index === activeIndex ? 'border-brand-600' : 'border-transparent'
               }`}
             >
-              <img
+              <VenueImage
                 src={image.url}
                 alt={image.alt || venueName}
                 className="h-full w-full object-cover"

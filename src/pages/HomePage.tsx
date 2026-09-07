@@ -1,8 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type CSSProperties } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useVenueRail } from '../hooks/useVenueRail'
 import { VenueSearchBar } from '../components/venue/VenueSearchBar'
 import { VenueRail } from '../components/venue/VenueRail'
+import { useReducedMotion } from '../hooks/useReducedMotion'
+import { useInView } from '../hooks/useInView'
+
+const PROMISES = [
+  'Every venue is listed by a registered host and reviewable before you book.',
+  "See real availability up front, so you never book a date that's already taken.",
+  'Manage or cancel any upcoming booking yourself, anytime, from your dashboard.',
+]
 
 const FAQS = [
   {
@@ -31,12 +39,18 @@ export function HomePage() {
   const [search, setSearch] = useState('')
   const location = useLocation()
   const navigate = useNavigate()
+  const reducedMotion = useReducedMotion()
+  const { ref: promisesRef, reveal: promisesReveal } = useInView<HTMLElement>()
+  const { ref: faqRef, reveal: faqReveal } = useInView<HTMLElement>()
 
   useEffect(() => {
     if (!location.hash) return
     const element = document.getElementById(location.hash.slice(1))
-    element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }, [location.hash])
+    element?.scrollIntoView({
+      behavior: reducedMotion ? 'auto' : 'smooth',
+      block: 'start',
+    })
+  }, [location.hash, reducedMotion])
 
   const handleSearchSubmit = () => {
     navigate(search ? `/venues?q=${encodeURIComponent(search)}` : '/venues')
@@ -47,7 +61,8 @@ export function HomePage() {
 
   return (
     <div>
-      <section className="relative">
+      {/* Clipped: the entrance animation scales the image past the viewport. */}
+      <section className="relative overflow-hidden">
         <h1 className="sr-only">Find your next stay</h1>
         <picture>
           <source
@@ -74,11 +89,22 @@ export function HomePage() {
             width={3840}
             height={1118}
             fetchPriority="high"
-            className="h-auto w-full"
+            className="animate-settle h-auto w-full"
           />
         </picture>
 
-        <div className="absolute inset-x-0 bottom-0 mx-auto max-w-xl translate-y-1/2 px-4">
+        {/* Keeps the search legible wherever the photo runs bright. */}
+        <div
+          aria-hidden="true"
+          className="from-deep-900/60 pointer-events-none absolute inset-x-0 bottom-0 hidden h-40 bg-gradient-to-t to-transparent sm:block"
+        />
+
+        {/* Overlaid from sm up; below that it sits flush under the photo,
+            because the mobile crop carries text all the way to its edge. */}
+        <div
+          className="animate-rise sm:absolute sm:inset-x-0 sm:bottom-0 sm:mx-auto sm:max-w-6xl sm:px-4"
+          style={{ animationDelay: '120ms' }}
+        >
           <VenueSearchBar
             value={search}
             onChange={setSearch}
@@ -87,87 +113,103 @@ export function HomePage() {
         </div>
       </section>
 
-      <div className="h-10 sm:h-12" />
-
       <VenueRail
         id="top-rated"
         title="Top rated stays"
+        seeAllTo="/venues"
         venues={topRated.venues}
         isLoading={topRated.isLoading}
       />
       <VenueRail
         id="budget"
         title="Budget friendly stays"
+        seeAllTo="/venues"
         venues={budget.venues}
         isLoading={budget.isLoading}
       />
 
-      <hr className="border-sand-200 mx-auto max-w-6xl" />
-
-      <section className="mx-auto max-w-6xl px-4 py-8">
-        <div className="bg-sun-400 rounded-xl p-6 md:p-8">
-          <h2 className="font-display text-ink-900 text-2xl font-semibold">
+      <section
+        ref={promisesRef}
+        data-reveal={promisesReveal}
+        className="mx-auto max-w-6xl px-4 py-10"
+      >
+        <div
+          data-stagger
+          className="border-sand-200 rounded-2xl border bg-white p-6 md:p-10"
+        >
+          <h2 className="text-ink-900 text-xl font-semibold tracking-tight">
             Book with confidence
           </h2>
-          <ul className="mt-4 space-y-3 text-sm">
-            <li className="text-ink-900 flex items-start gap-2.5">
-              <span className="bg-brand-600 mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
-                ✓
-              </span>
-              Every venue is listed by a registered host and reviewable before you book.
-            </li>
-            <li className="text-ink-900 flex items-start gap-2.5">
-              <span className="bg-brand-600 mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
-                ✓
-              </span>
-              See real availability up front, so you never book a date that's already
-              taken.
-            </li>
-            <li className="text-ink-900 flex items-start gap-2.5">
-              <span className="bg-brand-600 mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
-                ✓
-              </span>
-              Manage or cancel any upcoming booking yourself, anytime, from your
-              dashboard.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <hr className="border-sand-200 mx-auto max-w-6xl" />
-
-      <section className="mx-auto max-w-3xl px-4 py-10">
-        <h2 className="font-display text-ink-900 text-2xl font-semibold">
-          Frequently asked questions
-        </h2>
-        <div className="mt-4 space-y-3">
-          {FAQS.map((faq) => (
-            <details
-              key={faq.q}
-              className="border-sand-200 group hover:border-brand-200 rounded-2xl border bg-white p-5 shadow-sm transition-colors"
-            >
-              <summary className="text-ink-900 flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-medium">
-                {faq.q}
-                <span className="bg-sun-400/15 text-sun-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-transform group-open:rotate-180">
+          <ul className="mt-5 grid gap-4 md:grid-cols-3">
+            {PROMISES.map((promise) => (
+              <li key={promise} className="text-ink-900/80 flex items-start gap-3">
+                <span className="bg-sun-400/20 text-sun-600 mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
                   <svg
                     aria-hidden="true"
                     viewBox="0 0 20 20"
                     fill="none"
-                    className="h-3.5 w-3.5"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-3 w-3"
                   >
-                    <path
-                      d="m5 7.5 5 5 5-5"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
+                    <path d="m4 10.5 4 4 8-9" />
                   </svg>
                 </span>
-              </summary>
-              <p className="text-ink-900/70 mt-3 text-sm">{faq.a}</p>
-            </details>
-          ))}
+                <span className="text-[15px]">{promise}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section
+        ref={faqRef}
+        data-reveal={faqReveal}
+        className="mx-auto max-w-6xl px-4 py-10"
+      >
+        <div className="grid gap-6 md:grid-cols-[1fr_2fr] md:gap-10">
+          <div data-stagger>
+            <h2 className="text-ink-900 text-xl font-semibold tracking-tight text-balance">
+              Frequently asked questions
+            </h2>
+            <p className="text-ink-900/60 mt-2 text-[15px]">
+              Everything you need before your first booking.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            {FAQS.map((faq, index) => (
+              <details
+                key={faq.q}
+                data-stagger
+                style={{ [`--i`]: index + 1 } as CSSProperties}
+                className="border-sand-200 group hover:border-brand-300 accordion rounded-2xl border bg-white p-5 transition-colors duration-150"
+              >
+                <summary className="text-ink-900 flex cursor-pointer list-none items-center justify-between gap-4 text-base font-medium">
+                  {faq.q}
+                  <span className="bg-sand-100 text-ink-900/60 flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-transform group-open:rotate-180">
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      className="h-3.5 w-3.5"
+                    >
+                      <path
+                        d="m5 7.5 5 5 5-5"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </summary>
+                <p className="text-ink-900/70 mt-3 text-[15px]">{faq.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
     </div>
