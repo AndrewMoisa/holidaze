@@ -68,7 +68,7 @@ export function BookingForm({ venue, bookedRanges }: BookingFormProps) {
         onSelect={setRange}
         excludeDisabled
         min={2}
-        numberOfMonths={2}
+        numberOfMonths={1}
         disabled={[{ before: new Date() }, ...bookedRanges]}
         classNames={calendarClassNames}
       />

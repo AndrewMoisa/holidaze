@@ -16,23 +16,28 @@ export function VenueGallery({
   const active = images[activeIndex]
 
   return (
-    <div>
-      <div className="bg-sand-100 aspect-[16/9] overflow-hidden rounded-lg">
+    <div className="md:flex md:items-start md:gap-3">
+      <div className="bg-sand-100 relative aspect-[16/9] overflow-hidden rounded-2xl md:order-last md:flex-1">
         <img
           src={active.url}
           alt={active.alt || venueName}
           className="h-full w-full object-cover"
         />
+        {images.length > 1 && (
+          <span className="bg-ink-900/70 absolute right-3 bottom-3 rounded-full px-2.5 py-1 text-xs font-medium text-white">
+            {activeIndex + 1} / {images.length}
+          </span>
+        )}
       </div>
 
       {images.length > 1 && (
-        <div className="mt-3 flex gap-2 overflow-x-auto">
+        <div className="mt-3 flex gap-2 overflow-x-auto md:mt-0 md:w-20 md:shrink-0 md:flex-col md:overflow-x-visible">
           {images.map((image, index) => (
             <button
               key={image.url + index}
               type="button"
               onClick={() => setActiveIndex(index)}
-              className={`bg-sand-100 h-16 w-20 shrink-0 overflow-hidden rounded-md border-2 transition-colors ${
+              className={`bg-sand-100 h-16 w-20 shrink-0 overflow-hidden rounded-xl border-2 transition-colors ${
                 index === activeIndex ? 'border-brand-600' : 'border-transparent'
               }`}
             >
