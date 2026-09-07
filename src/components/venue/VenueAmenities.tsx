@@ -17,7 +17,7 @@ export function VenueAmenities({ meta }: { meta: VenueMeta }) {
       {entries.map((key) => (
         <li
           key={key}
-          className="border-sand-200 text-ink-900/80 rounded-full border bg-white px-3 py-1 text-sm"
+          className="bg-sun-400/15 text-sun-600 rounded-full px-3 py-1 text-sm font-medium"
         >
           {LABELS[key]}
         </li>

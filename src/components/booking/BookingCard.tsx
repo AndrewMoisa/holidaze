@@ -13,11 +13,11 @@ export function BookingCard({ booking, onCancel }: BookingCardProps) {
   const image = venue?.media?.[0]
 
   return (
-    <div className="border-sand-200 flex gap-4 rounded-lg border bg-white p-4">
+    <div className="border-sand-200 flex gap-4 rounded-2xl border bg-white p-4 shadow-sm">
       <img
         src={image?.url || '/images/no-image-icon.png'}
         alt={image?.alt || venue?.name || ''}
-        className="bg-sand-100 h-20 w-28 shrink-0 rounded-md object-cover"
+        className="bg-sand-100 h-20 w-28 shrink-0 rounded-xl object-cover"
       />
       <div className="flex-1">
         {venue ? (
@@ -31,10 +31,11 @@ export function BookingCard({ booking, onCancel }: BookingCardProps) {
           <p className="text-ink-900 font-medium">Venue</p>
         )}
         <p className="text-ink-900/60 mt-1 text-sm">
-          {formatDate(booking.dateFrom)} – {formatDate(booking.dateTo)} · {booking.guests}{' '}
-          guest
-          {booking.guests > 1 ? 's' : ''}
+          {formatDate(booking.dateFrom)} – {formatDate(booking.dateTo)}
         </p>
+        <span className="bg-brand-100 text-brand-700 mt-2 inline-block rounded-full px-2.5 py-0.5 text-xs font-medium">
+          {booking.guests} guest{booking.guests > 1 ? 's' : ''}
+        </span>
       </div>
       {onCancel && (
         <Button variant="secondary" onClick={() => onCancel(booking.id)}>

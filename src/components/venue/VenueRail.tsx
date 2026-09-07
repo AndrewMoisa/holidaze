@@ -14,7 +14,7 @@ export function VenueRail({ id, title, venues, isLoading }: VenueRailProps) {
 
   return (
     <section id={id} className="mx-auto max-w-6xl scroll-mt-20 px-4 py-8">
-      <h2 className="text-ink-900 text-xl font-semibold">{title}</h2>
+      <h2 className="font-display text-ink-900 text-2xl font-semibold">{title}</h2>
       <div className="mt-4">
         {isLoading ? (
           <Spinner label={`Loading ${title}`} />

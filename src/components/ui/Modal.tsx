@@ -28,8 +28,8 @@ export function Modal({
       aria-modal="true"
       className="bg-ink-900/40 fixed inset-0 z-50 flex items-center justify-center px-4"
     >
-      <div className="w-full max-w-sm rounded-lg bg-white p-6 shadow-lg">
-        <h2 className="text-ink-900 text-lg font-semibold">{title}</h2>
+      <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl">
+        <h2 className="font-display text-ink-900 text-lg font-semibold">{title}</h2>
         {children && <div className="text-ink-900/70 mt-2 text-sm">{children}</div>}
         <div className="mt-6 flex justify-end gap-3">
           <Button
