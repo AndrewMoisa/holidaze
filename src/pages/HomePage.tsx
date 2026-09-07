@@ -1,14 +1,8 @@
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
-import { useVenues } from '../hooks/useVenues'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useVenueRail } from '../hooks/useVenueRail'
-import { useDebounce } from '../hooks/useDebounce'
 import { VenueSearchBar } from '../components/venue/VenueSearchBar'
-import { VenueGrid } from '../components/venue/VenueGrid'
 import { VenueRail } from '../components/venue/VenueRail'
-import { Pagination } from '../components/ui/Pagination'
-import { Spinner } from '../components/ui/Spinner'
-import { ErrorMessage } from '../components/ui/ErrorMessage'
 
 const FAQS = [
   {
@@ -35,9 +29,8 @@ const FAQS = [
 
 export function HomePage() {
   const [search, setSearch] = useState('')
-  const [page, setPage] = useState(1)
-  const debouncedSearch = useDebounce(search)
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (!location.hash) return
@@ -45,12 +38,10 @@ export function HomePage() {
     element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }, [location.hash])
 
-  const handleSearchChange = (value: string) => {
-    setSearch(value)
-    setPage(1)
+  const handleSearchSubmit = () => {
+    navigate(search ? `/venues?q=${encodeURIComponent(search)}` : '/venues')
   }
 
-  const { venues, meta, isLoading, error } = useVenues({ q: debouncedSearch, page })
   const topRated = useVenueRail('rating', 'desc', 5)
   const budget = useVenueRail('price', 'asc', 5)
 
@@ -65,7 +56,7 @@ export function HomePage() {
         />
 
         <div className="absolute inset-x-0 bottom-0 mx-auto max-w-xl translate-y-1/2 px-4">
-          <VenueSearchBar value={search} onChange={handleSearchChange} />
+          <VenueSearchBar value={search} onChange={setSearch} onSubmit={handleSearchSubmit} />
         </div>
       </section>
 
@@ -84,9 +75,13 @@ export function HomePage() {
         isLoading={budget.isLoading}
       />
 
+      <hr className="border-sand-200 mx-auto max-w-6xl" />
+
       <section className="mx-auto max-w-6xl px-4 py-8">
-        <div className="rounded-xl bg-amber-400 p-6 md:p-8">
-          <h2 className="text-ink-900 text-xl font-semibold">Book with confidence</h2>
+        <div className="bg-sun-400 rounded-xl p-6 md:p-8">
+          <h2 className="font-display text-ink-900 text-2xl font-semibold">
+            Book with confidence
+          </h2>
           <ul className="mt-4 space-y-3 text-sm">
             <li className="text-ink-900 flex items-start gap-2.5">
               <span className="bg-brand-600 mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
@@ -112,44 +107,33 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-10">
-        <h2 className="text-ink-900 text-xl font-semibold">Explore venues</h2>
-
-        <div className="mt-6">
-          {isLoading && <Spinner label="Loading venues" />}
-          {!isLoading && error && <ErrorMessage message={error} />}
-          {!isLoading && !error && (
-            <>
-              <VenueGrid venues={venues} />
-              <Pagination meta={meta} onPageChange={setPage} />
-            </>
-          )}
-        </div>
-      </section>
+      <hr className="border-sand-200 mx-auto max-w-6xl" />
 
       <section className="mx-auto max-w-3xl px-4 py-10">
-        <h2 className="text-ink-900 text-xl font-semibold">Frequently asked questions</h2>
-        <div className="border-sand-200 divide-sand-200 mt-4 divide-y rounded-lg border bg-white">
+        <h2 className="font-display text-ink-900 text-2xl font-semibold">
+          Frequently asked questions
+        </h2>
+        <div className="mt-4 space-y-3">
           {FAQS.map((faq) => (
-            <details key={faq.q} className="group p-4">
-              <summary className="text-ink-900 flex cursor-pointer list-none items-center justify-between text-sm font-medium">
+            <details
+              key={faq.q}
+              className="border-sand-200 group hover:border-brand-200 rounded-2xl border bg-white p-5 shadow-sm transition-colors"
+            >
+              <summary className="text-ink-900 flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-medium">
                 {faq.q}
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  className="text-ink-900/40 h-4 w-4 shrink-0 transition-transform group-open:rotate-180"
-                >
-                  <path
-                    d="m5 7.5 5 5 5-5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <span className="bg-sun-400/15 text-sun-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-transform group-open:rotate-180">
+                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-3.5 w-3.5">
+                    <path
+                      d="m5 7.5 5 5 5-5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
               </summary>
-              <p className="text-ink-900/70 mt-2 text-sm">{faq.a}</p>
+              <p className="text-ink-900/70 mt-3 text-sm">{faq.a}</p>
             </details>
           ))}
         </div>

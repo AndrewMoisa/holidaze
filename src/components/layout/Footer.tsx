@@ -8,7 +8,7 @@ export function Footer() {
           <p className="text-ink-900 text-base font-medium">Explore</p>
           <ul className="mt-1 flex flex-col gap-2 text-sm">
             <li>
-              <Link to="/" className="text-ink-900/70 hover:text-brand-600">
+              <Link to="/venues" className="text-ink-900/70 hover:text-brand-600">
                 Venues
               </Link>
             </li>

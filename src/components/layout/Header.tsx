@@ -24,7 +24,7 @@ export function Header() {
         </NavLink>
 
         <nav className="hidden items-center justify-center gap-6 md:flex">
-          <Link to="/" className={shortcutClasses}>
+          <Link to="/venues" className={shortcutClasses}>
             Venues
           </Link>
           <Link to="/#top-rated" className={shortcutClasses}>
