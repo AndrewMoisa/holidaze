@@ -1,9 +1,29 @@
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth'
 
 const linkClasses =
   'text-brand-100/75 hover:text-white inline-block py-1 text-[15px] transition-colors duration-150'
 
 export function Footer() {
+  const { isAuthenticated, profile } = useAuth()
+
+  // The Explore column used to offer "Log in" and "Become a venue manager"
+  // to people who were already signed in, and already managers.
+  const exploreLinks = [
+    { to: '/venues', label: 'Venues' },
+    ...(isAuthenticated
+      ? [
+          ...(profile?.venueManager
+            ? [{ to: '/manager/venues', label: 'My venues' }]
+            : []),
+          { to: '/my-bookings', label: 'My bookings' },
+        ]
+      : [
+          { to: '/register', label: 'Become a venue manager' },
+          { to: '/login', label: 'Log in' },
+        ]),
+  ]
+
   return (
     <footer className="bg-deep-900 mt-16">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4">
@@ -23,21 +43,13 @@ export function Footer() {
         <div className="flex flex-col items-start gap-1">
           <p className="text-base font-medium text-white">Explore</p>
           <ul className="mt-2 flex flex-col gap-2">
-            <li>
-              <Link to="/venues" className={linkClasses}>
-                Venues
-              </Link>
-            </li>
-            <li>
-              <Link to="/register" className={linkClasses}>
-                Become a venue manager
-              </Link>
-            </li>
-            <li>
-              <Link to="/login" className={linkClasses}>
-                Log in
-              </Link>
-            </li>
+            {exploreLinks.map((link) => (
+              <li key={link.to}>
+                <Link to={link.to} className={linkClasses}>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
