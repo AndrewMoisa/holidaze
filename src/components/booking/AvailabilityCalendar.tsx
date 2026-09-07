@@ -19,11 +19,7 @@ export function AvailabilityCalendar({
       />
       <div className="text-ink-900/60 mt-2 flex items-center gap-4 text-xs">
         <span className="flex items-center gap-1.5">
-          <span className="bg-sand-100 border-sand-200 inline-block h-3 w-3 rounded-sm border" />
-          Available
-        </span>
-        <span className="flex items-center gap-1.5">
-          <span className="bg-ink-900/10 inline-block h-3 w-3 rounded-sm" />
+          <span className="text-ink-900/30 inline-block line-through">00</span>
           Unavailable
         </span>
       </div>
