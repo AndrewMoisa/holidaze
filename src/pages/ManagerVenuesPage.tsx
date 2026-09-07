@@ -38,10 +38,10 @@ export function ManagerVenuesPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
       <div className="flex items-center justify-between">
-        <h1 className="text-ink-900 text-2xl font-semibold">My venues</h1>
+        <h1 className="font-display text-ink-900 text-3xl font-semibold">My venues</h1>
         <Link
           to="/manager/venues/new"
-          className="bg-brand-600 hover:bg-brand-700 rounded-md px-4 py-2 text-sm font-medium text-white transition-colors"
+          className="bg-brand-600 hover:bg-brand-700 rounded-xl px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:shadow-md"
         >
           Create venue
         </Link>
@@ -64,12 +64,12 @@ export function ManagerVenuesPage() {
             {venues.map((venue) => (
               <div
                 key={venue.id}
-                className="border-sand-200 flex items-center gap-4 rounded-lg border bg-white p-4"
+                className="border-sand-200 flex items-center gap-4 rounded-2xl border bg-white p-4 shadow-sm"
               >
                 <img
                   src={venue.media?.[0]?.url || '/images/no-image-icon.png'}
                   alt={venue.media?.[0]?.alt || venue.name}
-                  className="bg-sand-100 h-16 w-20 shrink-0 rounded-md object-cover"
+                  className="bg-sand-100 h-16 w-20 shrink-0 rounded-xl object-cover"
                 />
                 <div className="flex-1">
                   <Link
@@ -78,22 +78,24 @@ export function ManagerVenuesPage() {
                   >
                     {venue.name}
                   </Link>
-                  <p className="text-ink-900/60 mt-1 text-sm">
-                    {formatPrice(venue.price)} / night · {venue.bookings?.length ?? 0}{' '}
-                    booking
-                    {venue.bookings?.length === 1 ? '' : 's'}
-                  </p>
+                  <div className="mt-1.5 flex items-center gap-2">
+                    <p className="text-ink-900/60 text-sm">{formatPrice(venue.price)} / night</p>
+                    <span className="bg-brand-100 text-brand-700 rounded-full px-2.5 py-0.5 text-xs font-medium">
+                      {venue.bookings?.length ?? 0} booking
+                      {venue.bookings?.length === 1 ? '' : 's'}
+                    </span>
+                  </div>
                 </div>
                 <div className="flex gap-2">
                   <Link
                     to={`/manager/venues/${venue.id}/bookings`}
-                    className="border-sand-200 text-ink-900 hover:bg-sand-100 rounded-md border px-3 py-1.5 text-sm"
+                    className="border-sand-200 text-ink-900 hover:bg-sand-100 rounded-xl border px-3 py-1.5 text-sm transition-colors"
                   >
                     Bookings
                   </Link>
                   <Link
                     to={`/manager/venues/${venue.id}/edit`}
-                    className="border-sand-200 text-ink-900 hover:bg-sand-100 rounded-md border px-3 py-1.5 text-sm"
+                    className="border-sand-200 text-ink-900 hover:bg-sand-100 rounded-xl border px-3 py-1.5 text-sm transition-colors"
                   >
                     Edit
                   </Link>

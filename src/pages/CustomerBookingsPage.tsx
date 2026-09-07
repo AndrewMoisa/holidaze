@@ -60,7 +60,7 @@ export function CustomerBookingsPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
-      <h1 className="text-ink-900 text-2xl font-semibold">My bookings</h1>
+      <h1 className="font-display text-ink-900 text-3xl font-semibold">My bookings</h1>
 
       {isLoading && <Spinner label="Loading your bookings" />}
       {!isLoading && error && <ErrorMessage message={error} />}
@@ -75,6 +75,8 @@ export function CustomerBookingsPage() {
               emptyMessage="No upcoming bookings."
             />
           </section>
+
+          <hr className="border-sand-200" />
 
           <section>
             <h2 className="text-ink-900 mb-3 text-lg font-medium">Past</h2>
