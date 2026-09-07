@@ -37,16 +37,17 @@ The app runs at `http://localhost:5173` by default.
 
 ### Available scripts
 
-| Script                  | Description                         |
-| ----------------------- | ----------------------------------- |
-| `npm run dev`           | Start the local dev server          |
-| `npm run build`         | Type-check and build for production |
-| `npm run preview`       | Preview a production build locally  |
-| `npm run lint`          | Run the linter                      |
-| `npm run format`        | Format the codebase with Prettier   |
-| `npm run test`          | Run the test suite once             |
-| `npm run test:watch`    | Run tests in watch mode             |
-| `npm run test:coverage` | Run tests with coverage             |
+| Script                  | Description                                                                    |
+| ----------------------- | ------------------------------------------------------------------------------ |
+| `npm run dev`           | Start the local dev server                                                     |
+| `npm run build`         | Type-check and build for production                                            |
+| `npm run preview`       | Preview a production build locally                                             |
+| `npm run lint`          | Run the linter                                                                 |
+| `npm run format`        | Format the codebase with Prettier                                              |
+| `npm run test`          | Run the test suite once                                                        |
+| `npm run test:watch`    | Run tests in watch mode                                                        |
+| `npm run test:coverage` | Run tests with coverage                                                        |
+| `npm run images`        | Regenerate the images in `public/images` from the originals in `assets/images` |
 
 ## Environment variables
 

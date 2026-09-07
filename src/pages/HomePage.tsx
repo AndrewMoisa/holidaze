@@ -49,14 +49,30 @@ export function HomePage() {
     <div>
       <section className="relative">
         <h1 className="sr-only">Find your next stay</h1>
-        <img
-          src="/images/newhero.jpg"
-          alt="Holidaze — book your next dream getaway"
-          className="h-56 w-full object-cover sm:h-72 md:h-96"
-        />
+        <picture>
+          <source
+            type="image/webp"
+            sizes="100vw"
+            srcSet="/images/hero-960.webp 960w, /images/hero-1440.webp 1440w, /images/hero-1920.webp 1920w"
+          />
+          <img
+            src="/images/hero-1440.jpg"
+            sizes="100vw"
+            srcSet="/images/hero-960.jpg 960w, /images/hero-1440.jpg 1440w, /images/hero-1920.jpg 1920w"
+            alt="Holidaze — book your next dream getaway"
+            width={1920}
+            height={559}
+            fetchPriority="high"
+            className="h-48 w-full object-cover sm:h-60 md:h-72"
+          />
+        </picture>
 
         <div className="absolute inset-x-0 bottom-0 mx-auto max-w-xl translate-y-1/2 px-4">
-          <VenueSearchBar value={search} onChange={setSearch} onSubmit={handleSearchSubmit} />
+          <VenueSearchBar
+            value={search}
+            onChange={setSearch}
+            onSubmit={handleSearchSubmit}
+          />
         </div>
       </section>
 
@@ -122,7 +138,12 @@ export function HomePage() {
               <summary className="text-ink-900 flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-medium">
                 {faq.q}
                 <span className="bg-sun-400/15 text-sun-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-transform group-open:rotate-180">
-                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-3.5 w-3.5">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    className="h-3.5 w-3.5"
+                  >
                     <path
                       d="m5 7.5 5 5 5-5"
                       stroke="currentColor"

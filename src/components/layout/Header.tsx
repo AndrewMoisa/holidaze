@@ -19,6 +19,8 @@ export function Header() {
           <img
             src="/images/logo.png"
             alt="Holidaze"
+            width={531}
+            height={96}
             className="h-6 w-auto object-contain"
           />
         </NavLink>
