@@ -7,26 +7,42 @@ import sharp from 'sharp'
 const SOURCE_DIR = 'assets/images'
 const OUTPUT_DIR = 'public/images'
 
-/** Hero widths cover 1x phones up to 2x laptops; the frame is never taller than 288px. */
-const HERO_WIDTHS = [960, 1440, 1920]
+/** The hero spans the viewport, so cover 1x phones through 2x laptops. */
+const HERO_WIDTHS = [960, 1440, 1920, 2560]
 
-async function writeHero(source) {
+/**
+ * The hero is a 3.4:1 banner, which collapses to a thin strip on a phone. Narrow
+ * screens get the right-hand region instead — the part carrying the wordmark and
+ * the offer — at an aspect ratio that still has some height to it.
+ */
+const HERO_MOBILE_CROP = { left: 2260, top: 0, width: 1580, height: 1118 }
+const HERO_MOBILE_WIDTHS = [720, 1080]
+
+async function writeVariants(image, basename, widths) {
   const written = []
-  for (const width of HERO_WIDTHS) {
-    const resized = sharp(source).resize({ width, withoutEnlargement: true })
+  for (const width of widths) {
+    const resized = image.clone().resize({ width, withoutEnlargement: true })
     written.push(
       resized
         .clone()
         .jpeg({ quality: 72, mozjpeg: true })
-        .toFile(join(OUTPUT_DIR, `hero-${width}.jpg`)),
-      resized
-        .clone()
-        .webp({ quality: 70 })
-        .toFile(join(OUTPUT_DIR, `hero-${width}.webp`)),
+        .toFile(join(OUTPUT_DIR, `${basename}-${width}.jpg`)),
+      resized.clone().webp({ quality: 70 }).toFile(join(OUTPUT_DIR, `${basename}-${width}.webp`)),
     )
   }
   await Promise.all(written)
-  return HERO_WIDTHS.flatMap((width) => [`hero-${width}.jpg`, `hero-${width}.webp`])
+  return widths.flatMap((width) => [`${basename}-${width}.jpg`, `${basename}-${width}.webp`])
+}
+
+async function writeHero(source) {
+  return [
+    ...(await writeVariants(sharp(source), 'hero', HERO_WIDTHS)),
+    ...(await writeVariants(
+      sharp(source).extract(HERO_MOBILE_CROP),
+      'hero-mobile',
+      HERO_MOBILE_WIDTHS,
+    )),
+  ]
 }
 
 /** The header renders the logo 24px tall, so 96px covers up to a 4x display. */

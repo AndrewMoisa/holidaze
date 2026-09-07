@@ -51,19 +51,30 @@ export function HomePage() {
         <h1 className="sr-only">Find your next stay</h1>
         <picture>
           <source
+            media="(max-width: 639px)"
             type="image/webp"
             sizes="100vw"
-            srcSet="/images/hero-960.webp 960w, /images/hero-1440.webp 1440w, /images/hero-1920.webp 1920w"
+            srcSet="/images/hero-mobile-720.webp 720w, /images/hero-mobile-1080.webp 1080w"
+          />
+          <source
+            media="(max-width: 639px)"
+            sizes="100vw"
+            srcSet="/images/hero-mobile-720.jpg 720w, /images/hero-mobile-1080.jpg 1080w"
+          />
+          <source
+            type="image/webp"
+            sizes="100vw"
+            srcSet="/images/hero-960.webp 960w, /images/hero-1440.webp 1440w, /images/hero-1920.webp 1920w, /images/hero-2560.webp 2560w"
           />
           <img
             src="/images/hero-1440.jpg"
             sizes="100vw"
-            srcSet="/images/hero-960.jpg 960w, /images/hero-1440.jpg 1440w, /images/hero-1920.jpg 1920w"
-            alt="Holidaze — book your next dream getaway"
-            width={1920}
-            height={559}
+            srcSet="/images/hero-960.jpg 960w, /images/hero-1440.jpg 1440w, /images/hero-1920.jpg 1920w, /images/hero-2560.jpg 2560w"
+            alt="Holidaze — unlock exclusive deals on flights, hotels and vacation packages"
+            width={3840}
+            height={1118}
             fetchPriority="high"
-            className="h-48 w-full object-cover sm:h-60 md:h-72"
+            className="h-auto w-full"
           />
         </picture>
 
