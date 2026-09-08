@@ -1,7 +1,8 @@
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { Header } from './Header'
 import { Footer } from './Footer'
+import { Spinner } from '../ui/Spinner'
 
 export function Layout() {
   const location = useLocation()
@@ -28,7 +29,10 @@ export function Layout() {
         tabIndex={-1}
         className="animate-fade-in flex-1"
       >
-        <Outlet />
+        {/* Routes are code-split, so the first visit to a page needs a boundary. */}
+        <Suspense fallback={<Spinner label="Loading page" />}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
     </div>
