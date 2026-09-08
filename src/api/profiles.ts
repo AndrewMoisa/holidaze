@@ -5,19 +5,6 @@ import type { Venue } from '../types/venue'
 import type { Booking } from '../types/booking'
 import type { VenuesQuery } from './venues'
 
-export function getProfile(
-  name: string,
-  query: { venues?: boolean; bookings?: boolean } = {},
-) {
-  return apiClient<ApiResponse<Profile>>(
-    `/holidaze/profiles/${encodeURIComponent(name)}`,
-    {
-      auth: true,
-      params: { _venues: query.venues, _bookings: query.bookings },
-    },
-  )
-}
-
 export interface UpdateProfilePayload {
   bio?: string
   avatar?: { url: string; alt?: string }
