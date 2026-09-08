@@ -1,0 +1,9 @@
+# Normalise line endings so formatting the codebase doesn't show up as
+# whole-file changes on Windows checkouts.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
