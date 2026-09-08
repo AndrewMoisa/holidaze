@@ -130,6 +130,9 @@ export function VenuesPage() {
         {!isLoading && error && <ErrorMessage message={error} />}
         {!isLoading && !error && (
           <>
+            {/* The cards are h3, so the outline needs an h2 between them and
+                the page h1 even though the results region has no visible title. */}
+            <h2 className="sr-only">Search results</h2>
             <p className="text-ink-900/60 mb-4 text-sm" aria-live="polite">
               {isNarrowed
                 ? `${visibleVenues.length} of ${venues.length} on this page match your filters`
