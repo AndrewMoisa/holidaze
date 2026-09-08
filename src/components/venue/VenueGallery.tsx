@@ -37,9 +37,13 @@ export function VenueGallery({
             <button
               key={image.url + index}
               type="button"
+              aria-label={`View photo ${index + 1} of ${images.length}`}
+              aria-pressed={index === activeIndex}
               onClick={() => setActiveIndex(index)}
-              className={`bg-sand-100 h-16 w-20 shrink-0 overflow-hidden rounded-xl border-2 transition-colors ${
-                index === activeIndex ? 'border-brand-600' : 'border-transparent'
+              className={`bg-sand-100 h-16 w-20 shrink-0 overflow-hidden rounded-xl border-2 transition ${
+                index === activeIndex
+                  ? 'border-brand-600'
+                  : 'border-transparent opacity-60 hover:opacity-100'
               }`}
             >
               <VenueImage

@@ -45,9 +45,10 @@ export function VenueFilterBar({
           <VenueSearchBar value={search} onChange={onSearchChange} variant="inline" />
         </div>
 
-        <label className="flex shrink-0 items-center gap-2 text-sm">
+        <label htmlFor="sort" className="flex shrink-0 items-center gap-2 text-sm">
           <span className="text-ink-900/60">Sort by</span>
           <select
+            id="sort"
             value={sort}
             onChange={(event) => onSortChange(event.target.value as SortKey)}
             className="border-sand-200 text-ink-900 h-12 rounded-full border bg-white px-4 text-sm font-medium"
@@ -79,9 +80,10 @@ export function VenueFilterBar({
 
         <span className="bg-sand-200 mx-1 hidden h-6 w-px sm:block" />
 
-        <label className="flex items-center gap-2 text-sm">
+        <label htmlFor="guests-filter" className="flex items-center gap-2 text-sm">
           <span className="text-ink-900/60">Guests</span>
           <select
+            id="guests-filter"
             value={filters.guests ?? ''}
             onChange={(event) =>
               onGuestsChange(event.target.value ? Number(event.target.value) : null)

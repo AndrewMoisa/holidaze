@@ -103,6 +103,7 @@ export function VenueForm({
           <Input label="City" {...register('city')} />
           <Input label="Zip" {...register('zip')} />
           <Input label="Country" {...register('country')} />
+          <Input label="Continent" {...register('continent')} />
         </div>
       </fieldset>
 
