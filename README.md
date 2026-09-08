@@ -6,12 +6,12 @@ A front end for Holidaze, an accommodation booking site, built against the Norof
 
 |                          |                                                                          |
 | ------------------------ | ------------------------------------------------------------------------ |
-| Live demo                | _TBD_                                                                    |
+| Live demo                | https://holidazev1.netlify.app                                           |
 | Repository               | https://github.com/AndrewMoisa/holidaze                                  |
 | Design prototype (Figma) | https://www.figma.com/design/5V0P29gY55rW0PbvSocp6I/Holidaze?node-id=0-1 |
-| Style guide              |      |
+| Style guide              |                                                                          |
 | Kanban board             | https://github.com/users/AndrewMoisa/projects/3                          |
-| Gantt chart              |      |
+| Gantt chart              |                                                                          |
 
 ## Tech stack
 
@@ -26,7 +26,7 @@ A front end for Holidaze, an accommodation booking site, built against the Norof
 ## Getting started
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/AndrewMoisa/holidaze.git
 cd holidaze
 npm install
 cp .env.example .env.local
@@ -61,7 +61,7 @@ Registering an account requires a `@stud.noroff.no` email address, in line with 
 
 A suggested walkthrough:
 
-1. Browse venues on the home page and open one to see its details and availability.
+1. Open **Venues** in the header to browse and search, then open a venue to see its details and availability.
 2. Register a customer account and log in, then book a venue for a free date range.
 3. Check the booking under "My bookings".
 4. Register a second account as a venue manager, log in, and create a venue.
@@ -77,8 +77,8 @@ management, and an MSW-backed integration test for the home page. Run it with
 
 - No payment flow is implemented; bookings are recorded without payment.
 - Avatar and venue media are set by URL rather than file upload, matching what the underlying API supports.
-- Venue search matches name/description only (the Noroff API doesn't support server-side filtering by date availability or guest count), so date and guest selection happen on each venue's own page rather than in the home page search bar.
+- Venue search matches name/description only (the Noroff API doesn't support server-side filtering by date availability or guest count), so date and guest selection happen on each venue's own page rather than in the main search bar.
 
 ## Author
 
-_Your name here_
+Andrei Moisa
