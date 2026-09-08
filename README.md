@@ -11,7 +11,7 @@ A front end for Holidaze, an accommodation booking site, built against the Norof
 | Design prototype (Figma) | https://www.figma.com/design/5V0P29gY55rW0PbvSocp6I/Holidaze?node-id=0-1 |
 | Style guide              | https://www.figma.com/design/UNtZNUo3tTC14FgS27KsSB?node-id=8-2          |
 | Kanban board             | https://github.com/users/AndrewMoisa/projects/3                          |
-| Gantt chart              |                                                                          |
+| Gantt chart              | https://github.com/AndrewMoisa/holidaze/blob/main/docs/timeline.md       |
 
 ## Tech stack
 
