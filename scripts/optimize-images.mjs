@@ -27,11 +27,17 @@ async function writeVariants(image, basename, widths) {
         .clone()
         .jpeg({ quality: 72, mozjpeg: true })
         .toFile(join(OUTPUT_DIR, `${basename}-${width}.jpg`)),
-      resized.clone().webp({ quality: 70 }).toFile(join(OUTPUT_DIR, `${basename}-${width}.webp`)),
+      resized
+        .clone()
+        .webp({ quality: 70 })
+        .toFile(join(OUTPUT_DIR, `${basename}-${width}.webp`)),
     )
   }
   await Promise.all(written)
-  return widths.flatMap((width) => [`${basename}-${width}.jpg`, `${basename}-${width}.webp`])
+  return widths.flatMap((width) => [
+    `${basename}-${width}.jpg`,
+    `${basename}-${width}.webp`,
+  ])
 }
 
 async function writeHero(source) {
