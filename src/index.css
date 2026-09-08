@@ -263,3 +263,17 @@ input[type='search']:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+/* Skip link: parked above the viewport until it takes focus. */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 50;
+  transform: translateY(-250%);
+  transition: transform 0.15s var(--ease-out-soft);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
