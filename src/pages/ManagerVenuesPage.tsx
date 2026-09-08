@@ -67,21 +67,24 @@ export function ManagerVenuesPage() {
             {venues.map((venue) => (
               <div
                 key={venue.id}
-                className="border-sand-200 flex items-center gap-4 rounded-2xl border bg-white p-4"
+                className="border-sand-200 flex flex-wrap items-center gap-4 rounded-2xl border bg-white p-4"
               >
                 <img
                   src={venue.media?.[0]?.url || '/images/no-image-icon.png'}
                   alt={venue.media?.[0]?.alt || venue.name}
                   className="bg-sand-100 h-16 w-20 shrink-0 rounded-xl object-cover"
                 />
-                <div className="flex-1">
+                {/* basis-40 is what makes the actions wrap below on narrow
+                    screens; min-w-0 lets a long venue name truncate instead of
+                    forcing the row wider than its container. */}
+                <div className="min-w-0 flex-1 basis-40">
                   <Link
                     to={`/venues/${venue.id}`}
-                    className="text-ink-900 hover:text-brand-600 -my-0.5 inline-block py-0.5 font-medium"
+                    className="text-ink-900 hover:text-brand-600 -my-0.5 block truncate py-0.5 font-medium"
                   >
                     {venue.name}
                   </Link>
-                  <div className="mt-1.5 flex items-center gap-2">
+                  <div className="mt-1.5 flex flex-wrap items-center gap-2">
                     <p className="text-ink-900/60 text-sm">
                       {formatPrice(venue.price)} / night
                     </p>
@@ -91,7 +94,7 @@ export function ManagerVenuesPage() {
                     </span>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex shrink-0 gap-2">
                   <Link
                     to={`/manager/venues/${venue.id}/bookings`}
                     className="border-sand-200 text-ink-900 hover:bg-sand-100 rounded-xl border px-3 py-1.5 text-sm transition-colors"
