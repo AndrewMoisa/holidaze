@@ -47,6 +47,7 @@ The app runs at `http://localhost:5173` by default.
 | `npm run test`          | Run the test suite once                                                        |
 | `npm run test:watch`    | Run tests in watch mode                                                        |
 | `npm run test:coverage` | Run tests with coverage                                                        |
+| `npm run verify`        | Lint, type-check, build, then run the tests                                    |
 | `npm run images`        | Regenerate the images in `public/images` from the originals in `assets/images` |
 
 ## Environment variables
@@ -78,6 +79,13 @@ live API. They cover:
 - the venue card, dialog, and auth state management
 - the home, venues, venue detail, my-bookings and manager venues pages
 - the route guards for logged-in and venue-manager-only routes
+
+`npm run verify` runs the whole check in one go — lint, type-check and build, then
+the tests. To have it run automatically before every push:
+
+```bash
+git config core.hooksPath .githooks
+```
 
 ## Known limitations
 

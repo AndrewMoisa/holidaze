@@ -1,0 +1,5 @@
+#!/bin/sh
+# Lint, type-check, build and test before anything leaves the machine.
+# Enable with: git config core.hooksPath .githooks
+
+npm run verify
