@@ -4,14 +4,14 @@ A front end for Holidaze, an accommodation booking site, built against the Norof
 
 ## Links
 
-|                          |                                                                          |
-| ------------------------ | ------------------------------------------------------------------------ |
-| Live demo                | https://holidazev1.netlify.app                                           |
-| Repository               | https://github.com/AndrewMoisa/holidaze                                  |
-| Design prototype (Figma) | https://www.figma.com/design/5V0P29gY55rW0PbvSocp6I/Holidaze?node-id=0-1 |
-| Style guide              | https://www.figma.com/design/UNtZNUo3tTC14FgS27KsSB?node-id=8-2          |
-| Kanban board             | https://github.com/users/AndrewMoisa/projects/3                          |
-| Gantt chart              | https://github.com/AndrewMoisa/holidaze/blob/main/docs/timeline.md       |
+|                          |                                                                                             |
+| ------------------------ | ------------------------------------------------------------------------------------------- |
+| Live demo                | https://holidazev1.netlify.app                                                              |
+| Repository               | https://github.com/AndrewMoisa/holidaze                                                     |
+| Design prototype (Figma) | https://www.figma.com/design/UNtZNUo3tTC14FgS27KsSB/Holidaze-%E2%80%94-As-Built?node-id=1-3 |
+| Style guide (Figma)      | https://www.figma.com/design/UNtZNUo3tTC14FgS27KsSB/Holidaze-%E2%80%94-As-Built?node-id=8-2 |
+| Kanban board             | https://github.com/users/AndrewMoisa/projects/3                                             |
+| Gantt chart              | https://github.com/AndrewMoisa/holidaze/blob/main/docs/timeline.md                          |
 
 ## Tech stack
 
