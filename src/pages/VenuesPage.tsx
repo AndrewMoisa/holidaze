@@ -7,6 +7,7 @@ import { VenueGrid, VenueGridSkeleton } from '../components/venue/VenueGrid'
 import { Pagination } from '../components/ui/Pagination'
 import { ErrorMessage } from '../components/ui/ErrorMessage'
 import type { VenueMeta } from '../types/venue'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 const isSortKey = (value: string): value is SortKey => value in SORT_OPTIONS
 
@@ -22,6 +23,8 @@ export function VenuesPage() {
     (key) => searchParams.get(key) === '1',
   )
   const debouncedSearch = useDebounce(search)
+
+  useDocumentTitle('Venues')
 
   const updateParams = (
     mutate: (params: URLSearchParams) => void,

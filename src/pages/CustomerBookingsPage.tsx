@@ -7,14 +7,21 @@ import type { Booking } from '../types/booking'
 import { Spinner } from '../components/ui/Spinner'
 import { ErrorMessage } from '../components/ui/ErrorMessage'
 import { BookingList } from '../components/booking/BookingList'
+import { Modal } from '../components/ui/Modal'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export function CustomerBookingsPage() {
   const { profile } = useAuth()
   const [bookings, setBookings] = useState<Booking[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [bookingToCancel, setBookingToCancel] = useState<Booking | null>(null)
+  const [isCancelling, setIsCancelling] = useState(false)
+  const [cancelError, setCancelError] = useState<string | null>(null)
 
   const name = profile?.name
+
+  useDocumentTitle('My bookings')
 
   useEffect(() => {
     if (!name) return
@@ -43,14 +50,24 @@ export function CustomerBookingsPage() {
     }
   }, [name])
 
-  const handleCancel = async (id: string) => {
-    if (!window.confirm('Cancel this booking?')) return
+  const handleCancel = (id: string) => {
+    setCancelError(null)
+    setBookingToCancel(bookings.find((booking) => booking.id === id) ?? null)
+  }
 
+  const confirmCancel = async () => {
+    if (!bookingToCancel) return
+
+    setIsCancelling(true)
+    setCancelError(null)
     try {
-      await deleteBooking(id)
-      setBookings((prev) => prev.filter((booking) => booking.id !== id))
+      await deleteBooking(bookingToCancel.id)
+      setBookings((prev) => prev.filter((booking) => booking.id !== bookingToCancel.id))
+      setBookingToCancel(null)
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : 'Failed to cancel booking')
+      setCancelError(err instanceof ApiError ? err.message : 'Failed to cancel booking')
+    } finally {
+      setIsCancelling(false)
     }
   }
 
@@ -83,6 +100,24 @@ export function CustomerBookingsPage() {
             <BookingList bookings={past} emptyMessage="No past bookings." />
           </section>
         </div>
+      )}
+
+      {bookingToCancel && (
+        <Modal
+          title="Cancel this booking?"
+          confirmLabel="Cancel booking"
+          cancelLabel="Keep it"
+          variant="danger"
+          isConfirming={isCancelling}
+          onConfirm={confirmCancel}
+          onCancel={() => setBookingToCancel(null)}
+        >
+          {cancelError ? (
+            <ErrorMessage message={cancelError} />
+          ) : (
+            `Your stay at ${bookingToCancel.venue?.name ?? 'this venue'} will be released. This cannot be undone.`
+          )}
+        </Modal>
       )}
     </div>
   )

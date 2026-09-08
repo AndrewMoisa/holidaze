@@ -1,9 +1,12 @@
 import { Link, Navigate } from 'react-router-dom'
 import { RegisterForm } from '../components/auth/RegisterForm'
 import { useAuth } from '../hooks/useAuth'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export function RegisterPage() {
   const { isAuthenticated } = useAuth()
+
+  useDocumentTitle('Sign up')
 
   if (isAuthenticated) return <Navigate to="/" replace />
 

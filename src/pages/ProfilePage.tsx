@@ -1,8 +1,11 @@
 import { useAuth } from '../hooks/useAuth'
 import { AvatarUploadForm } from '../components/profile/AvatarUploadForm'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export function ProfilePage() {
   const { profile } = useAuth()
+
+  useDocumentTitle('Profile')
 
   if (!profile) return null
 

@@ -8,6 +8,7 @@ import { Spinner } from '../components/ui/Spinner'
 import { ErrorMessage } from '../components/ui/ErrorMessage'
 import { EmptyState } from '../components/ui/EmptyState'
 import { formatDate } from '../utils/date'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export function ManagerVenueBookingsPage() {
   const { id } = useParams()
@@ -16,6 +17,8 @@ export function ManagerVenueBookingsPage() {
   const [venue, setVenue] = useState<Venue | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+
+  useDocumentTitle(venue ? `Bookings for ${venue.name}` : 'Venue bookings')
 
   useEffect(() => {
     if (!id) return

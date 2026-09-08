@@ -1,10 +1,13 @@
 import { Link, Navigate, useLocation } from 'react-router-dom'
 import { LoginForm } from '../components/auth/LoginForm'
 import { useAuth } from '../hooks/useAuth'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export function LoginPage() {
   const { isAuthenticated } = useAuth()
   const location = useLocation()
+
+  useDocumentTitle('Log in')
 
   if (isAuthenticated) {
     const from = (location.state as { from?: { pathname?: string } } | null)?.from

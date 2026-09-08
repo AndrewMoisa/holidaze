@@ -11,6 +11,7 @@ import { Button } from '../components/ui/Button'
 import { Modal } from '../components/ui/Modal'
 import { formatPrice } from '../utils/currency'
 import type { Venue } from '../types/venue'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export function ManagerVenuesPage() {
   const { profile } = useAuth()
@@ -18,6 +19,8 @@ export function ManagerVenuesPage() {
   const [venueToDelete, setVenueToDelete] = useState<Venue | null>(null)
   const [isDeleting, setIsDeleting] = useState(false)
   const [deleteError, setDeleteError] = useState<string | null>(null)
+
+  useDocumentTitle('My venues')
 
   const handleDelete = async () => {
     if (!venueToDelete) return

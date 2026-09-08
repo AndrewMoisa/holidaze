@@ -5,6 +5,7 @@ import { VenueSearchBar } from '../components/venue/VenueSearchBar'
 import { VenueRail } from '../components/venue/VenueRail'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 import { useInView } from '../hooks/useInView'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 const PROMISES = [
   'Every venue is listed by a registered host and reviewable before you book.',
@@ -42,6 +43,8 @@ export function HomePage() {
   const reducedMotion = useReducedMotion()
   const { ref: promisesRef, reveal: promisesReveal } = useInView<HTMLElement>()
   const { ref: faqRef, reveal: faqReveal } = useInView<HTMLElement>()
+
+  useDocumentTitle()
 
   useEffect(() => {
     if (!location.hash) return

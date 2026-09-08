@@ -8,6 +8,7 @@ import { Spinner } from '../components/ui/Spinner'
 import { ErrorMessage } from '../components/ui/ErrorMessage'
 import type { VenueFormValues } from '../utils/schemas/venue.schema'
 import type { Venue } from '../types/venue'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 interface ManagerVenueFormPageProps {
   mode: 'create' | 'edit'
@@ -66,6 +67,8 @@ export function ManagerVenueFormPage({ mode }: ManagerVenueFormPageProps) {
   const [isLoading, setIsLoading] = useState(mode === 'edit')
   const [loadError, setLoadError] = useState<string | null>(null)
   const [submitError, setSubmitError] = useState<string | null>(null)
+
+  useDocumentTitle(mode === 'create' ? 'New venue' : 'Edit venue')
 
   useEffect(() => {
     if (mode !== 'edit' || !id) return

@@ -14,12 +14,15 @@ import { ErrorMessage } from '../components/ui/ErrorMessage'
 import { formatPrice } from '../utils/currency'
 import { getDisabledRanges } from '../utils/date'
 import { stripHtml } from '../utils/text'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export function VenueDetailPage() {
   const { id } = useParams()
   const { venue, isLoading, error } = useVenue(id)
   const { isAuthenticated } = useAuth()
   const { venues: similar, isLoading: isLoadingSimilar } = useSimilarVenues(id, 5)
+
+  useDocumentTitle(venue?.name)
 
   if (isLoading) return <Spinner label="Loading venue" />
   if (error) {
