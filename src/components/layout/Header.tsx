@@ -36,7 +36,10 @@ export function Header() {
           />
         </NavLink>
 
-        <nav className="hidden items-center justify-center gap-6 md:flex">
+        <nav
+          aria-label="Browse"
+          className="hidden items-center justify-center gap-6 md:flex"
+        >
           {browseLinks.map((link) => (
             <Link key={link.to} to={link.to} className={shortcutClasses}>
               {link.label}
@@ -44,7 +47,10 @@ export function Header() {
           ))}
         </nav>
 
-        <nav className="hidden items-center justify-end gap-1 md:flex">
+        <nav
+          aria-label="Account"
+          className="hidden items-center justify-end gap-1 md:flex"
+        >
           {isAuthenticated && profile?.venueManager && (
             <NavLink to="/manager/venues" className={navLinkClasses}>
               My venues

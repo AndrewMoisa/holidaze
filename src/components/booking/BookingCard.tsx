@@ -30,7 +30,7 @@ export function BookingCard({ booking, onCancel }: BookingCardProps) {
         ) : (
           <p className="text-ink-900 font-medium">Venue</p>
         )}
-        <p className="text-ink-900/60 mt-1 text-sm">
+        <p className="text-ink-900/70 mt-1 text-sm">
           {formatDate(booking.dateFrom)} – {formatDate(booking.dateTo)}
         </p>
         <span className="bg-brand-100 text-brand-700 mt-2 inline-block rounded-full px-2.5 py-0.5 text-xs font-medium">

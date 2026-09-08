@@ -20,6 +20,10 @@
   --color-sand-50: #faf8f4;
   --color-sand-100: #f0ece2;
   --color-sand-200: #e2dac9;
+  /* Dividers and card edges can be as faint as sand-200, but the outline of a
+     control the user has to find has to clear 3:1 against both the page and
+     the field's own white fill. sand-400 is the lightest step that does. */
+  --color-sand-400: #9c8e6e;
 
   /* The accent. Used once per screen. */
   --color-sun-400: #e8a33d;
@@ -27,6 +31,11 @@
 
   --color-deep-900: #082935;
   --color-ink-900: #1f2421;
+
+  /* The focus ring lands on light pages and on the dark hero alike, so it needs
+     3:1 either way. brand-500 is too light against sand-50 (2.6:1); this step
+     clears 3.9:1 on sand-50 and 3.3:1 on deep-900. */
+  --color-focus: #1786ae;
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
@@ -244,7 +253,7 @@ select {
 
 /* One consistent focus ring for every interactive element. */
 :focus-visible {
-  outline: 2px solid var(--color-brand-500);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 

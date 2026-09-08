@@ -32,7 +32,7 @@ export function LoginPage() {
 
         <div className="border-sand-200 flex flex-col justify-center rounded-2xl border bg-white p-8 shadow-md">
           <h2 className="text-ink-900 text-xl font-semibold tracking-tight">Log in</h2>
-          <p className="text-ink-900/60 mt-2 text-[15px]">
+          <p className="text-ink-900/70 mt-2 text-[15px]">
             New to Holidaze?{' '}
             <Link to="/register" className="text-brand-600 font-medium underline">
               Create an account

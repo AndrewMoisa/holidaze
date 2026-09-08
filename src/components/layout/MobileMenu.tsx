@@ -116,7 +116,10 @@ export function MobileMenu({
         </button>
       </div>
 
-      <nav className="flex flex-1 flex-col justify-center gap-8 px-6 pb-16">
+      <nav
+        aria-label="Menu"
+        className="flex flex-1 flex-col justify-center gap-8 px-6 pb-16"
+      >
         <ul className="flex flex-col gap-4">
           {browseLinks.map((link, index) => (
             <li key={link.to} data-stagger style={{ '--i': index } as CSSProperties}>

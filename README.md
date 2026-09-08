@@ -69,9 +69,15 @@ A suggested walkthrough:
 
 ## Automated tests
 
-The test suite covers pure utilities, form validation, key components, auth state
-management, and an MSW-backed integration test for the home page. Run it with
-`npm run test`.
+Run the suite with `npm run test`, or `npm run test:coverage` for a coverage report.
+Every request the app makes is mocked with MSW, so the tests run without touching the
+live API. They cover:
+
+- date and text utilities, and the Zod validation schemas
+- the login, registration and booking forms, including their validation errors
+- the venue card, dialog, and auth state management
+- the home, venues, venue detail, my-bookings and manager venues pages
+- the route guards for logged-in and venue-manager-only routes
 
 ## Known limitations
 

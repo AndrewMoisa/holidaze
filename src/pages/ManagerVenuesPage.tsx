@@ -85,7 +85,7 @@ export function ManagerVenuesPage() {
                     {venue.name}
                   </Link>
                   <div className="mt-1.5 flex flex-wrap items-center gap-2">
-                    <p className="text-ink-900/60 text-sm">
+                    <p className="text-ink-900/70 text-sm">
                       {formatPrice(venue.price)} / night
                     </p>
                     <span className="bg-brand-100 text-brand-700 rounded-full px-2.5 py-0.5 text-xs font-medium">
@@ -97,13 +97,13 @@ export function ManagerVenuesPage() {
                 <div className="flex shrink-0 gap-2">
                   <Link
                     to={`/manager/venues/${venue.id}/bookings`}
-                    className="border-sand-200 text-ink-900 hover:bg-sand-100 rounded-xl border px-3 py-1.5 text-sm transition-colors"
+                    className="border-sand-400 text-ink-900 hover:bg-sand-100 rounded-xl border px-3 py-1.5 text-sm transition-colors"
                   >
                     Bookings
                   </Link>
                   <Link
                     to={`/manager/venues/${venue.id}/edit`}
-                    className="border-sand-200 text-ink-900 hover:bg-sand-100 rounded-xl border px-3 py-1.5 text-sm transition-colors"
+                    className="border-sand-400 text-ink-900 hover:bg-sand-100 rounded-xl border px-3 py-1.5 text-sm transition-colors"
                   >
                     Edit
                   </Link>

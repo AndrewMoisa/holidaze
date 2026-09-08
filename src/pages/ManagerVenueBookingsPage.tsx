@@ -91,7 +91,7 @@ export function ManagerVenueBookingsPage() {
             >
               <div>
                 <p className="text-ink-900 font-medium">{booking.customer.name}</p>
-                <p className="text-ink-900/60 mt-1 text-sm">
+                <p className="text-ink-900/70 mt-1 text-sm">
                   {formatDate(booking.dateFrom)} – {formatDate(booking.dateTo)}
                 </p>
               </div>

@@ -23,7 +23,7 @@ const chipClasses = (active: boolean) =>
   `rounded-full border px-3.5 py-1.5 text-sm font-medium transition-[colors,transform] duration-150 active:scale-[0.97] ${
     active
       ? 'border-brand-600 bg-brand-600 text-white'
-      : 'border-sand-200 bg-white text-ink-900/70 hover:border-brand-300 hover:text-ink-900'
+      : 'border-sand-400 bg-white text-ink-900/70 hover:border-brand-600 hover:text-ink-900'
   }`
 
 export function VenueFilterBar({
@@ -46,12 +46,12 @@ export function VenueFilterBar({
         </div>
 
         <label htmlFor="sort" className="flex shrink-0 items-center gap-2 text-sm">
-          <span className="text-ink-900/60">Sort by</span>
+          <span className="text-ink-900/70">Sort by</span>
           <select
             id="sort"
             value={sort}
             onChange={(event) => onSortChange(event.target.value as SortKey)}
-            className="border-sand-200 text-ink-900 h-12 rounded-full border bg-white px-4 text-sm font-medium"
+            className="border-sand-400 text-ink-900 h-12 rounded-full border bg-white px-4 text-sm font-medium"
           >
             {(Object.keys(SORT_OPTIONS) as SortKey[]).map((key) => (
               <option key={key} value={key}>
@@ -81,14 +81,14 @@ export function VenueFilterBar({
         <span className="bg-sand-200 mx-1 hidden h-6 w-px sm:block" />
 
         <label htmlFor="guests-filter" className="flex items-center gap-2 text-sm">
-          <span className="text-ink-900/60">Guests</span>
+          <span className="text-ink-900/70">Guests</span>
           <select
             id="guests-filter"
             value={filters.guests ?? ''}
             onChange={(event) =>
               onGuestsChange(event.target.value ? Number(event.target.value) : null)
             }
-            className="border-sand-200 text-ink-900 rounded-full border bg-white px-3 py-1.5 text-sm font-medium"
+            className="border-sand-400 text-ink-900 rounded-full border bg-white px-3 py-1.5 text-sm font-medium"
           >
             <option value="">Any</option>
             {GUEST_OPTIONS.map((count) => (

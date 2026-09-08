@@ -54,7 +54,7 @@ export function AvailabilityRibbon({ bookedRanges }: AvailabilityRibbonProps) {
         ))}
       </div>
 
-      <div className="text-ink-900/50 mt-2 flex items-center justify-between text-xs">
+      <div className="text-ink-900/70 mt-2 flex items-center justify-between text-xs">
         <span>{shortDate(start)}</span>
         <span>{shortDate(lastNight)}</span>
       </div>

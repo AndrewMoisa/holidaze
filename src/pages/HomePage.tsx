@@ -177,7 +177,7 @@ export function HomePage() {
             <h2 className="text-ink-900 text-xl font-semibold tracking-tight text-balance">
               Frequently asked questions
             </h2>
-            <p className="text-ink-900/60 mt-2 text-[15px]">
+            <p className="text-ink-900/70 mt-2 text-[15px]">
               Everything you need before your first booking.
             </p>
           </div>
@@ -192,7 +192,7 @@ export function HomePage() {
               >
                 <summary className="text-ink-900 flex cursor-pointer list-none items-center justify-between gap-4 text-base font-medium">
                   {faq.q}
-                  <span className="bg-sand-100 text-ink-900/60 flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-transform group-open:rotate-180">
+                  <span className="bg-sand-100 text-ink-900/70 flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-transform group-open:rotate-180">
                     <svg
                       aria-hidden="true"
                       viewBox="0 0 20 20"

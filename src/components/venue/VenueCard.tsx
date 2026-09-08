@@ -42,16 +42,16 @@ export function VenueCard({ venue, index = 0 }: { venue: Venue; index?: number }
       <div className="flex flex-1 flex-col p-4">
         <h3 className="text-ink-900 truncate font-medium">{venue.name}</h3>
         {/* Rendered even when empty so prices stay on one baseline across a row. */}
-        <p className="text-ink-900/60 mt-1 h-5 truncate text-sm">
+        <p className="text-ink-900/70 mt-1 h-5 truncate text-sm">
           {location || '\u00A0'}
         </p>
         <div className="mt-auto flex items-baseline justify-between gap-2 pt-2">
           <p className="font-display text-ink-900 text-base font-semibold tabular-nums">
             {formatPrice(venue.price)}{' '}
-            <span className="text-ink-900/50 font-sans text-sm font-normal">/ night</span>
+            <span className="text-ink-900/70 font-sans text-sm font-normal">/ night</span>
           </p>
           {stays > 0 && (
-            <p className="text-ink-900/45 hidden shrink-0 text-xs tabular-nums sm:block">
+            <p className="text-ink-900/70 hidden shrink-0 text-xs tabular-nums sm:block">
               {stays} stay{stays === 1 ? '' : 's'}
             </p>
           )}

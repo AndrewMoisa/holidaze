@@ -19,13 +19,13 @@ export function ProfilePage() {
         />
         <div>
           <h1 className="display text-ink-900 text-4xl! font-semibold">{profile.name}</h1>
-          <p className="text-ink-900/60">{profile.email}</p>
+          <p className="text-ink-900/70">{profile.email}</p>
         </div>
       </div>
 
       <dl className="mt-6 grid grid-cols-2 gap-4 text-sm">
         <div>
-          <dt className="text-ink-900/50">Account type</dt>
+          <dt className="text-ink-900/70">Account type</dt>
           <dd className="text-ink-900">
             {profile.venueManager ? 'Venue manager' : 'Customer'}
           </dd>

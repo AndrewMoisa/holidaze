@@ -46,7 +46,7 @@ export function VenueDetailPage() {
     <div className="mx-auto max-w-6xl px-4 py-8">
       <Link
         to="/venues"
-        className="text-ink-900/60 hover:text-brand-600 inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+        className="text-ink-900/70 hover:text-brand-600 inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
       >
         <svg
           aria-hidden="true"
@@ -120,7 +120,7 @@ export function VenueDetailPage() {
           </p>
           <p className="font-display text-ink-900 mt-1 text-2xl font-semibold tabular-nums">
             {formatPrice(venue.price)}{' '}
-            <span className="text-ink-900/50 font-sans text-sm font-normal">/ night</span>
+            <span className="text-ink-900/70 font-sans text-sm font-normal">/ night</span>
           </p>
 
           <div className="border-sand-200 mt-5 border-t pt-5">
@@ -157,7 +157,7 @@ export function VenueDetailPage() {
                 {description}
               </p>
             ) : (
-              <p className="text-ink-900/50 mt-3 text-[15px]">No description provided.</p>
+              <p className="text-ink-900/70 mt-3 text-[15px]">No description provided.</p>
             )}
           </section>
 
@@ -175,7 +175,7 @@ export function VenueDetailPage() {
               <h2 className="text-ink-900 text-xl font-semibold tracking-tight">
                 Where you'll be
               </h2>
-              {location && <p className="text-ink-900/60 mt-1 text-[15px]">{location}</p>}
+              {location && <p className="text-ink-900/70 mt-1 text-[15px]">{location}</p>}
               <div className="mt-4">
                 <VenueMap lat={lat} lng={lng} label={venue.name} />
               </div>

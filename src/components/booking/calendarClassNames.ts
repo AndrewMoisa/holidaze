@@ -14,7 +14,7 @@ export const calendarClassNames: Partial<ClassNames> = {
   button_next: 'p-1 rounded hover:bg-sand-100 text-ink-900/70 disabled:opacity-30',
   month_grid: 'w-full border-collapse',
   weekdays: 'flex',
-  weekday: 'w-10 text-center text-xs font-medium text-ink-900/50',
+  weekday: 'w-10 text-center text-xs font-medium text-ink-900/70',
   week: 'flex w-full mt-1',
   day: 'w-10 h-10 text-center text-sm p-0 relative',
   day_button:

@@ -94,7 +94,7 @@ export function BookingForm({ venue, bookedRanges }: BookingFormProps) {
 
       <div className="border-sand-200 grid grid-cols-2 overflow-hidden rounded-xl border">
         <div className="border-sand-200 border-r px-3 py-2">
-          <p className="text-ink-900/50 text-xs font-medium tracking-wide uppercase">
+          <p className="text-ink-900/70 text-xs font-medium tracking-wide uppercase">
             Check-in
           </p>
           <p className="text-ink-900 mt-0.5 text-sm font-medium">
@@ -102,7 +102,7 @@ export function BookingForm({ venue, bookedRanges }: BookingFormProps) {
           </p>
         </div>
         <div className="px-3 py-2">
-          <p className="text-ink-900/50 text-xs font-medium tracking-wide uppercase">
+          <p className="text-ink-900/70 text-xs font-medium tracking-wide uppercase">
             Check-out
           </p>
           <p className="text-ink-900 mt-0.5 text-sm font-medium">
@@ -136,7 +136,7 @@ export function BookingForm({ venue, bookedRanges }: BookingFormProps) {
             setRange(undefined)
             setNotice(null)
           }}
-          className="text-ink-900/60 hover:text-brand-600 text-sm font-medium underline"
+          className="text-ink-900/70 hover:text-brand-600 text-sm font-medium underline"
         >
           Clear dates
         </button>
@@ -150,7 +150,7 @@ export function BookingForm({ venue, bookedRanges }: BookingFormProps) {
           id="guests"
           value={guests}
           onChange={(event) => setGuests(Number(event.target.value))}
-          className="focus:border-brand-500 focus:ring-brand-500 border-sand-200 rounded-md border bg-white px-3 py-2 text-sm outline-none focus:ring-1"
+          className="focus:border-brand-600 border-sand-400 rounded-md border bg-white px-3 py-2 text-sm"
         >
           {Array.from({ length: venue.maxGuests }, (_, index) => index + 1).map(
             (count) => (

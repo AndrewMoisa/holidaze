@@ -18,7 +18,7 @@ export function Pagination({ meta, onPageChange }: PaginationProps) {
       >
         Previous
       </Button>
-      <span className="text-ink-900/60 text-sm">
+      <span className="text-ink-900/70 text-sm">
         Page {meta.currentPage} of {meta.pageCount}
       </span>
       <Button

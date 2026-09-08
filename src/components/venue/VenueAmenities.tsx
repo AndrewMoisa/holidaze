@@ -10,7 +10,7 @@ const icon = (path: ReactNode) => (
     strokeWidth="1.6"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="text-ink-900/50 h-4.5 w-4.5 shrink-0"
+    className="text-ink-900/70 h-4.5 w-4.5 shrink-0"
   >
     {path}
   </svg>

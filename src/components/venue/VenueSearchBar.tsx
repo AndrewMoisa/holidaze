@@ -35,7 +35,7 @@ export function VenueSearchBar({
     return (
       <form
         onSubmit={handleSubmit}
-        className="border-sand-200 focus-within:border-brand-400 focus-within:outline-brand-500 flex h-12 items-center rounded-full border bg-white pl-5 shadow-sm transition-colors duration-150 focus-within:outline-2 focus-within:outline-offset-2"
+        className="border-sand-400 focus-within:border-brand-600 focus-within:outline-focus flex h-12 items-center rounded-full border bg-white pl-5 shadow-sm transition-colors duration-150 focus-within:outline-2 focus-within:outline-offset-2"
       >
         <input
           type="search"
@@ -43,7 +43,7 @@ export function VenueSearchBar({
           onChange={(event) => onChange(event.target.value)}
           placeholder="Search venues by name, description, or location…"
           aria-label="Search venues"
-          className="text-ink-900 placeholder:text-ink-900/40 h-full flex-1 border-0 bg-transparent text-sm outline-none"
+          className="text-ink-900 placeholder:text-ink-900/70 h-full flex-1 border-0 bg-transparent text-sm outline-none"
         />
         <button
           type="submit"
